@@ -23,10 +23,13 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html {
+	height: fill-available;
+}
 body {
 	line-height: 1;
+	height: fill-available;
 }
-
 ol, ul {
 	list-style: none;
 }
