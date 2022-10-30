@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1100"
+   height="1000.0001"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="cd_dvd_case2_overlay.svg"
+   inkscape:export-filename="/home/kostas/Desktop/cd-dvd.png"
+   inkscape:export-xdpi="30"
+   inkscape:export-ydpi="30">
+  <title
+     id="title3114">CD-DVD</title>
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3973">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.34782609;"
+         offset="0"
+         id="stop3975" />
+      <stop
+         id="stop3982"
+         offset="0.95999998"
+         style="stop-color:#ffffff;stop-opacity:0.26956522;" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.13913043;"
+         offset="1"
+         id="stop3977" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient7019">
+      <stop
+         id="stop7021"
+         offset="0"
+         style="stop-color:#ffc988;stop-opacity:1" />
+      <stop
+         style="stop-color:#be88e4;stop-opacity:1;"
+         offset="0.27419356"
+         id="stop7027" />
+      <stop
+         id="stop7023"
+         offset="1"
+         style="stop-color:#96ff88;stop-opacity:1;" />
+    </linearGradient>
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect12103"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect12100"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect12097"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect12094"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect12091"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect12088"
+       effect="spiro" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect12085"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect12082"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect12079"
+       is_visible="true" />
+    <linearGradient
+       id="linearGradient4196">
+      <stop
+         style="stop-color:#fffeb6;stop-opacity:1;"
+         offset="0"
+         id="stop4198" />
+      <stop
+         id="stop7025"
+         offset="0.54838711"
+         style="stop-color:#d6e0da;stop-opacity:1;" />
+      <stop
+         style="stop-color:#aec3fe;stop-opacity:1"
+         offset="1"
+         id="stop4200" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3912">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3914" />
+      <stop
+         id="stop3920"
+         offset="0.98409325"
+         style="stop-color:#fffee3;stop-opacity:0.49803922;" />
+      <stop
+         style="stop-color:#fffec8;stop-opacity:0;"
+         offset="1"
+         id="stop3916" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3995">
+      <stop
+         style="stop-color:#5f5f5f;stop-opacity:1;"
+         offset="0"
+         id="stop3997" />
+      <stop
+         style="stop-color:#a4a4a4;stop-opacity:1;"
+         offset="1"
+         id="stop3999" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3959">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3961" />
+      <stop
+         id="stop3932"
+         offset="0.04257783"
+         style="stop-color:#111111;stop-opacity:1;" />
+      <stop
+         id="stop3929"
+         offset="0.85155684"
+         style="stop-color:#111111;stop-opacity:1;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop3963" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3929">
+      <stop
+         style="stop-color:#d5d5d5;stop-opacity:1"
+         offset="0"
+         id="stop3931" />
+      <stop
+         id="stop4023"
+         offset="0.10714285"
+         style="stop-color:#333333;stop-opacity:1;" />
+      <stop
+         id="stop3937"
+         offset="0.87841034"
+         style="stop-color:#1b1b1b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#e2e2e2;stop-opacity:1"
+         offset="1"
+         id="stop3933" />
+    </linearGradient>
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect3916"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect3912"
+       effect="spiro" />
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect3908"
+       effect="spiro" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3904"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3900"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3896"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3892"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3888"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3884"
+       is_visible="true" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3995"
+       id="radialGradient3837"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.79739056,0.46037365,-0.39075131,0.67680111,282.076,-56.056404)"
+       spreadMethod="reflect"
+       cx="780"
+       cy="706.97827"
+       fx="780"
+       fy="706.97827"
+       r="639.42157" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3995"
+       id="radialGradient3979"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.78021102,0.46065056,-0.38233269,0.67720821,271.09449,-56.87563)"
+       cx="780"
+       cy="706.97827"
+       fx="780"
+       fy="706.97827"
+       r="639.42157"
+       spreadMethod="reflect" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="878.75695"
+     inkscape:cy="457.47818"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="3440"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3877"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="2.0557308e-06"
+       originy="2.4149481e-05" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>CD-DVD</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:date>20120313</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Kostas Šliažas</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>For not comercial use</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>CD</rdf:li>
+            <rdf:li>DVD</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(227.85659,-178.23877)">
+    <path
+       style="opacity:0;fill:url(#radialGradient3979);fill-opacity:1;fill-rule:nonzero;stroke:#6a5555;stroke-width:0.86982411;stroke-miterlimit:4"
+       d="m -220.67492,178.6737 c -3.74408,0 -6.74676,3.11016 -6.74676,6.98193 V 1170.822 c 0,3.8718 3.00268,6.9819 6.74676,6.9819 H 864.93486 c 3.74395,0 6.77364,-3.1101 6.77364,-6.9819 V 185.65563 c 0,-3.87177 -3.02969,-6.98193 -6.77364,-6.98193 z"
+       id="rect2998"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssssssss" />
+    <g
+       id="g4464"
+       style="opacity:0.5;stroke:#ffffff;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.83694464,0,0,0.88325737,-43.155101,170.09573)">
+      <path
+         transform="translate(6.7891244,-15.832946)"
+         sodipodi:end="3.1415927"
+         sodipodi:start="0"
+         d="m 159.6041,26.552273 a 43.436558,42.931484 0 0 1 -21.71828,37.179756 43.436558,42.931484 0 0 1 -43.436559,-10e-7 43.436558,42.931484 0 0 1 -21.718277,-37.179757 l 43.436556,2e-6 z"
+         sodipodi:ry="42.931484"
+         sodipodi:rx="43.436558"
+         sodipodi:cy="26.552273"
+         sodipodi:cx="116.16754"
+         id="path3819"
+         style="opacity:0.6465116;fill:#c8c8c8;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:0.6465116;fill:#c8c8c8;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="path3822"
+         sodipodi:cx="116.16754"
+         sodipodi:cy="26.552273"
+         sodipodi:rx="43.436558"
+         sodipodi:ry="42.931484"
+         d="m 159.6041,26.552273 a 43.436558,42.931484 0 0 1 -21.71828,37.179756 43.436558,42.931484 0 0 1 -43.436559,-10e-7 43.436558,42.931484 0 0 1 -21.718277,-37.179757 l 43.436556,2e-6 z"
+         sodipodi:start="0"
+         sodipodi:end="3.1415927"
+         transform="translate(753.29185,-15.832946)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:0.6465116;fill:#c8c8c8;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="path3830"
+         sodipodi:cx="116.16754"
+         sodipodi:cy="26.552273"
+         sodipodi:rx="43.436558"
+         sodipodi:ry="42.931484"
+         d="m 159.6041,26.552273 a 43.436558,42.931484 0 0 1 -21.71828,37.179756 43.436558,42.931484 0 0 1 -43.436559,-10e-7 43.436558,42.931484 0 0 1 -21.718277,-37.179757 l 43.436556,2e-6 z"
+         sodipodi:start="0"
+         sodipodi:end="3.1415927"
+         transform="matrix(1,0,0,-1,6.7891244,1166.4443)" />
+      <path
+         transform="matrix(1,0,0,-1,753.29185,1166.4443)"
+         sodipodi:end="3.1415927"
+         sodipodi:start="0"
+         d="m 159.6041,26.552273 a 43.436558,42.931484 0 0 1 -21.71828,37.179756 43.436558,42.931484 0 0 1 -43.436559,-10e-7 43.436558,42.931484 0 0 1 -21.718277,-37.179757 l 43.436556,2e-6 z"
+         sodipodi:ry="42.931484"
+         sodipodi:rx="43.436558"
+         sodipodi:cy="26.552273"
+         sodipodi:cx="116.16754"
+         id="path3832"
+         style="opacity:0.6465116;fill:#c8c8c8;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:type="arc" />
+    </g>
+  </g>
+</svg>

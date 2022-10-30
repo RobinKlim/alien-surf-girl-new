@@ -18,12 +18,24 @@ export default {
   methods: {
     opacityZero() {
       document.querySelector(".cd-cover").style.opacity = "0"
-      setTimeout(this.removeCoverDom, 1000)
+      setTimeout(this.removeCoverDom, 800)
     },
     removeCoverDom() {
       this.cdClicked = true;
+    },
+    getDimensions() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
-  }
+  },
+  mounted() {
+    window.addEventListener('resize', this.getDimensions);
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.getDimensions);
+  },
 }
 </script>
 
@@ -32,8 +44,10 @@ export default {
 /* CD placement & background */
 .home {
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url("@/assets/Bandshot_roof.jpg");
@@ -43,8 +57,9 @@ export default {
 .cd-cover {
   width: 80%;
   animation: pulse 2s ease-in-out infinite;
-  transition: 1s;
+  transition: 0.8s;
   z-index: 10;
+  box-shadow: rgb(0, 0, 0) -10px 0px 13px -7px, rgb(0, 0, 0) 10px 0px 13px -7px, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 @keyframes pulse {
   0% {
