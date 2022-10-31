@@ -50,9 +50,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("@/assets/Bandshot_roof.jpg");
-  background-size: cover;
-  background-position: center center;
 }
 .cd-cover {
   width: 80%;

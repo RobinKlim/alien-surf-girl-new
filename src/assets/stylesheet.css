@@ -24,11 +24,14 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 html {
-	height: fill-available;
+	height: 100%;
+	background-image: url("@/assets/Bandshot_roof.jpg");
+	background-size: cover;
+	background-position: center center;  
 }
 body {
 	line-height: 1;
-	height: fill-available;
+	height: 100%;
 }
 ol, ul {
 	list-style: none;
