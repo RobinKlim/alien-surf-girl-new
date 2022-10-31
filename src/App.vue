@@ -1,11 +1,11 @@
 <template>
-    <img src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{ navigationSmall: menuSmall}" alt="">
-      <router-link class="navigation-home-list navigation" :class="{navigationSmall: menuSmall}" v-on="menuSmall ? {click: growMenu} : {}" to="/">
-        <router-link to="/ueber" v-on="menuSmall == false ? {click: shrinkMenu} : {}">Über Uns</router-link>
-        <router-link to="/" v-on="menuSmall == false ? {click: shrinkMenu} : {}">Hits</router-link>
-        <router-link to="/" v-on="menuSmall == false ? {click: shrinkMenu} : {}">Kontakt</router-link>
-        <router-link to="/" v-on="menuSmall == false ? {click: shrinkMenu} : {}">Shows</router-link>
-      </router-link>
+    <img src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{ navigationSmall: menuSmall}" alt="" @click="console.log('test')">
+      <nav class="navigation-home-list navigation" id="teste" :class="{navigationSmall: menuSmall}">
+        <router-link class="about"  to="/ueber">Über Uns</router-link>
+        <router-link class="hits"  to="/hits">Hits</router-link>
+        <router-link class="contact"  to="/kontakt">Kontakt</router-link>
+        <router-link class="shows"  to="/shows">Shows</router-link>
+      </nav>
   <router-view/>
 </template>
 
@@ -23,30 +23,51 @@ export default {
       this.cDDimensions = document.querySelector('.navigation-home-list').clientWidth;
       document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
     },
-    // Verkleinern & nach unten schieben des Menüs
-    shrinkMenu() {
-      // Adapt Dimensions
-      this.cDDimensions = this.cDDimensions * 2 / 7
-      document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
-      // Activate class navigationSmall
-      console.log("hello")
-      this.menuSmall = true;
-    },
-    growMenu() {
-      this.cDDimensions = this.cDDimensions * 7 / 2
-      document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
-      // Deactivate class navigationSmall
-      console.log("its me")
-      this.menuSmall = false;
-    },
+    // grow/shrink menu 
+    resizeMenu() {
+      // shrink menu
+      if(this.menuSmall == false) {
+        this.cDDimensions = this.cDDimensions * 2 / 7
+        document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
+        // Activate class navigationSmall
+        this.menuSmall = true;
+        // Remove click-Event from single Links
+        document.querySelector(".about").removeEventListener("click", this.resizeMenu)
+        document.querySelector(".hits").removeEventListener("click", this.resizeMenu)
+        document.querySelector(".contact").removeEventListener("click", this.resizeMenu)
+        document.querySelector(".shows").removeEventListener("click", this.resizeMenu)
 
+        // document.querySelector("#teste").addEventListener("click", this.resizeMenu)
+
+        setTimeout( () => {document.querySelector(".navigation-home-list").addEventListener("click", this.resizeMenu); }, 1);
+      }
+      // grow menu
+      else {
+        this.cDDimensions = this.cDDimensions * 7 / 2
+        document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
+        // Deactivate class navigationSmall
+        this.menuSmall = false;
+        
+        document.querySelector(".about").addEventListener("click", this.resizeMenu)
+        document.querySelector(".hits").addEventListener("click", this.resizeMenu)
+        document.querySelector(".contact").addEventListener("click", this.resizeMenu)
+        document.querySelector(".shows").addEventListener("click", this.resizeMenu)
+
+        setTimeout( () => {document.querySelector(".navigation-home-list").removeEventListener("click", this.resizeMenu); }, 1);
+      }
+    }
   },
   // Breite der CD bekommen als CSS Variable und getWidth bei resize triggern
   mounted() {
     window.addEventListener('resize', this.getWidth);
     this.cDDimensions = document.querySelector('.navigation-home-list').clientWidth;
     document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
-  },
+
+    document.querySelector(".about").addEventListener("click", this.resizeMenu)
+    document.querySelector(".hits").addEventListener("click", this.resizeMenu)
+    document.querySelector(".contact").addEventListener("click", this.resizeMenu)
+    document.querySelector(".shows").addEventListener("click", this.resizeMenu)
+    },
   unmounted() {
     window.removeEventListener('resize', this.getWidth);
   },
@@ -96,6 +117,7 @@ a {
   top: 15%;
   left: 50%;
   translate: -50%;
+  pointer-events: none;
 }
 .navigation-home-list a:nth-child(2) {
   left: 75%;
