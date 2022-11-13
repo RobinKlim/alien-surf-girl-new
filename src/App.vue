@@ -1,15 +1,16 @@
 <template>
-    <img src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{ navigationSmall: menuSmall}" alt="" @click="console.log('test')">
-      <nav class="navigation-home-list navigation" id="teste" :class="{navigationSmall: menuSmall}">
-        <router-link class="about"  to="/ueber">Über Uns</router-link>
-        <router-link class="hits"  to="/hits">Hits</router-link>
-        <router-link class="contact"  to="/kontakt">Kontakt</router-link>
-        <router-link class="shows"  to="/shows">Shows</router-link>
-      </nav>
-  <router-view/>
+  <img src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{ navigationSmall: menuSmall}" alt="">
+  <nav class="navigation-home-list navigation" :class="{navigationSmall: menuSmall}">
+    <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="about"  to="/ueber">Über uns</router-link>
+    <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="hits"  to="/hits">Hits</router-link>
+    <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="contact"  to="/kontakt">Kontakt</router-link>
+    <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shows"  to="/shows">Shows</router-link>
+  </nav>
+  <router-view :menuSmall='this.menuSmall'/>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -29,31 +30,19 @@ export default {
       if(this.menuSmall == false) {
         this.cDDimensions = this.cDDimensions * 2 / 7
         document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
-        // Activate class navigationSmall
+        // add 
+        setTimeout(()=> {document.querySelector(".navigation-home-list").addEventListener("click", this.resizeMenu);}, 1);
         this.menuSmall = true;
-        // Remove click-Event from single Links
-        document.querySelector(".about").removeEventListener("click", this.resizeMenu)
-        document.querySelector(".hits").removeEventListener("click", this.resizeMenu)
-        document.querySelector(".contact").removeEventListener("click", this.resizeMenu)
-        document.querySelector(".shows").removeEventListener("click", this.resizeMenu)
-
-        // document.querySelector("#teste").addEventListener("click", this.resizeMenu)
-
-        setTimeout( () => {document.querySelector(".navigation-home-list").addEventListener("click", this.resizeMenu); }, 1);
       }
       // grow menu
       else {
         this.cDDimensions = this.cDDimensions * 7 / 2
         document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
+
+        document.querySelector(".navigation-home-list").removeEventListener("click", this.resizeMenu);
+
         // Deactivate class navigationSmall
         this.menuSmall = false;
-        
-        document.querySelector(".about").addEventListener("click", this.resizeMenu)
-        document.querySelector(".hits").addEventListener("click", this.resizeMenu)
-        document.querySelector(".contact").addEventListener("click", this.resizeMenu)
-        document.querySelector(".shows").addEventListener("click", this.resizeMenu)
-
-        setTimeout( () => {document.querySelector(".navigation-home-list").removeEventListener("click", this.resizeMenu); }, 1);
       }
     }
   },
@@ -62,11 +51,6 @@ export default {
     window.addEventListener('resize', this.getWidth);
     this.cDDimensions = document.querySelector('.navigation-home-list').clientWidth;
     document.documentElement.style.setProperty('--cDDimensions', `${this.cDDimensions}px`);
-
-    document.querySelector(".about").addEventListener("click", this.resizeMenu)
-    document.querySelector(".hits").addEventListener("click", this.resizeMenu)
-    document.querySelector(".contact").addEventListener("click", this.resizeMenu)
-    document.querySelector(".shows").addEventListener("click", this.resizeMenu)
     },
   unmounted() {
     window.removeEventListener('resize', this.getWidth);
@@ -77,14 +61,16 @@ export default {
 
 <style scoped>
 
+
 /* Navigation Design*/
 .navigation {
-  position: absolute;
+  position: fixed;
   bottom: 50%;
   left: 50%;
   transform: translate(-50%, 50%) rotate(0deg);
   width: 70%;
   transition: all 1s; 
+  z-index: 1;
   /* animation: rotation 10s linear; */
 }
 .navigation-home-list{
@@ -98,7 +84,10 @@ export default {
   /* animation: rotation 10s linear infinite; */
 }
 .navigationSmall:hover {
-  cursor: pointer;  
+  cursor: pointer;
+}
+.disableClick {
+  pointer-events: none;
 }
 /* List and Font */
 @font-face {
@@ -117,7 +106,6 @@ a {
   top: 15%;
   left: 50%;
   translate: -50%;
-  pointer-events: none;
 }
 .navigation-home-list a:nth-child(2) {
   left: 75%;

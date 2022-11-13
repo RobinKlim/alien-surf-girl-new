@@ -9,7 +9,8 @@ import CDCover from '../components/CDCover'
 
 export default {
   name: 'HomeView',
-  components: { CDCover},
+  props: ['menuSmall'],
+  components: { CDCover },
   data() {
     return {
       cdClicked: false
