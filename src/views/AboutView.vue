@@ -5,24 +5,27 @@
     <div class="newsTextContainer zIndex5">
       <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
     </div>
-    <PersonalCard class="middleZ"></PersonalCard>
-
+    <div class="card-deck">
+      <img  src="../assets/SingleShots/Cyrus.jpeg" alt="">
+      <img  src="../assets/SingleShots/Robin.jpeg" alt="">
+      <img  src="../assets/SingleShots/Jonas.jpeg" alt="">
+      <img  src="@/assets/SingleShots/Philipp.jpeg" alt="">
+      <img :src="imgSrc" alt="">
+    </div>
   </div>
-
-
 </template>
 
 <script>
 import Overlay from '../components/Overlay'
-import PersonalCard from '../components/PersonalCard'
 
   export default {
     props: ['menuSmall'],
-    components: { Overlay, PersonalCard },
+    components: { Overlay },
     data() {
       return {
         newsText: null,
         windowWidth: null,
+        imgSrc: '../assets/SingleShots/Morten.jpeg'
       }
     },
     mounted() {
@@ -32,6 +35,11 @@ import PersonalCard from '../components/PersonalCard'
       // get windwow width
       this.windowWidth = document.querySelector('html').clientWidth;
       document.documentElement.style.setProperty('--windowWidth', `${this.windowWidth}px`)
+    },
+    methods: {
+      changePositionImgDom() {
+        const imgFront = document.getElementById("div1");
+        const imgBack = document.getElementById("div2");      }
     }
   }
 </script>
@@ -52,12 +60,6 @@ import PersonalCard from '../components/PersonalCard'
   line-height: 3rem;
   animation: flagFromRight 30s linear infinite;
 }
-.personalCard {
-  z-index: 5;
-  margin-top: 15%;
-  height: 60%;
-}
-
 
 /* News Header Animation */
 @keyframes flagFromRight {
@@ -68,5 +70,62 @@ import PersonalCard from '../components/PersonalCard'
       translate: calc(var(--newsTextWidth) * -1 );
     }
 }
+
+/* KartenDeck */
+.card-deck {
+  position: relative;
+  height: 60%;
+  margin-top: 15%;
+}
+
+img {
+  position: absolute;
+  height: 100%;
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+img:nth-child(1) {
+  left: 50%;
+  translate: -49% 4%;
+  rotate: 5deg;
+}
+img:nth-child(2) {
+  left: 50%;
+  translate: -51% 2%;
+  rotate: -3deg;
+}
+img:nth-child(3) {
+  left: 50%;
+  translate: -49%;
+  rotate: 2deg;
+}
+img:nth-child(4) {
+  left: 50%;
+  translate: -51% -2%;
+  rotate: -2deg;
+}
+img:nth-child(5) {
+  left: 50%;
+  translate: -49% -4%;
+  rotate: 1deg;
+  animation: SwipeTeaser 2s linear 3;
+}
+
+/* Swipe Trigger Picture Front */
+@keyframes SwipeTeaser {
+    0% {
+      translate: -49% -4%;
+      rotate: 1deg;
+    }
+    50% {
+      translate: -59% -4%;
+      rotate: 3deg;
+    }
+    100% {
+      translate: -49% -4%;
+      rotate: 1deg;
+    }
+}
+
 
 </style>
