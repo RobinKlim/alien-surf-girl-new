@@ -61,7 +61,6 @@ export default {
 
 <style scoped>
 
-
 /* Navigation Design*/
 .navigation {
   position: fixed;
@@ -70,11 +69,11 @@ export default {
   transform: translate(-50%, 50%) rotate(0deg);
   width: 70%;
   transition: all 1s; 
-  z-index: 1;
+  z-index: 11
   /* animation: rotation 10s linear; */
 }
 .navigation-home-list{
-  z-index: 10;
+  z-index: 12;
   height: var(--cDDimensions);
 }
 .navigationSmall {

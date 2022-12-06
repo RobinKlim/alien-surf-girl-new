@@ -56,7 +56,7 @@ export default {
   width: 80%;
   animation: pulse 2s ease-in-out infinite;
   transition: 0.8s;
-  z-index: 10;
+  z-index: 15;
   box-shadow: rgb(0, 0, 0) -10px 0px 13px -7px, rgb(0, 0, 0) 10px 0px 13px -7px, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 @keyframes pulse {

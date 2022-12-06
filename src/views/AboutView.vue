@@ -1,10 +1,11 @@
 <template>
   <div class="about" >
-    <Overlay v-show="menuSmall == false"></Overlay>
-    <div class="newsTextContainer">
+    <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
+    <Overlay></Overlay>
+    <div class="newsTextContainer zIndex5">
       <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
     </div>
-    <PersonalCard></PersonalCard>
+    <PersonalCard class="middleZ"></PersonalCard>
 
   </div>
 
@@ -21,7 +22,7 @@ import PersonalCard from '../components/PersonalCard'
     data() {
       return {
         newsText: null,
-        windowWidth: null
+        windowWidth: null,
       }
     },
     mounted() {
@@ -37,30 +38,31 @@ import PersonalCard from '../components/PersonalCard'
 
 <style scoped>
 
-/* Moving News header */
+/* Structure */
 .about {
-  overflow: hidden;
-  min-height: 100%;
+  height: 100%;
 }
+/* Moving News header */
 .newsTextContainer {
-  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  background-color: rgba(255, 255, 255);
 }
 .newsText {
-  display: block;
   width: max-content;
+  line-height: 3rem;
   animation: flagFromRight 30s linear infinite;
 }
-
 .personalCard {
-  height: 300px;
+  z-index: 5;
+  margin-top: 15%;
+  height: 60%;
 }
 
 
 /* News Header Animation */
 @keyframes flagFromRight {
     from {
-      translate: 352px;
-      /* translate: var(--windowWidth); */
+      translate: var(--windowWidth);
     }
     to {
       translate: calc(var(--newsTextWidth) * -1 );

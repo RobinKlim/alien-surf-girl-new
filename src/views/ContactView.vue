@@ -18,14 +18,6 @@ import Overlay from '../components/Overlay'
 
 <style scoped>
 .about {
-
   font-size: large;
-}
-p, h1 {
-  padding: 5%;
-}
-img {
-  margin: 5%;
-  width: 60% ;
 }
 </style>
