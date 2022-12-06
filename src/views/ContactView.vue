@@ -17,7 +17,4 @@ import Overlay from '../components/Overlay'
 </script>
 
 <style scoped>
-.about {
-  font-size: large;
-}
 </style>

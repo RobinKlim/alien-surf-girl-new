@@ -6,17 +6,13 @@
       <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
     </div>
     <div class="card-deck">
-      <img  src="../assets/SingleShots/Cyrus.jpeg" alt="">
-      <img  src="../assets/SingleShots/Robin.jpeg" alt="">
-      <img  src="../assets/SingleShots/Jonas.jpeg" alt="">
-      <img  src="@/assets/SingleShots/Philipp.jpeg" alt="">
-      <img :src="imgSrc" alt="">
+      <img v-for="(name, index) in names" :key="names[index]" @click="index == 4 ? consoleLog() : ''" :src="require(`@/assets/SingleShots/${name}.jpeg`)">
     </div>
   </div>
 </template>
 
 <script>
-import Overlay from '../components/Overlay'
+import Overlay from '@/components/Overlay'
 
   export default {
     props: ['menuSmall'],
@@ -25,7 +21,7 @@ import Overlay from '../components/Overlay'
       return {
         newsText: null,
         windowWidth: null,
-        imgSrc: '../assets/SingleShots/Morten.jpeg'
+        names: ["Jonas", "Robin", "Philipp", "Cyrus", "Morten"],
       }
     },
     mounted() {
@@ -37,9 +33,8 @@ import Overlay from '../components/Overlay'
       document.documentElement.style.setProperty('--windowWidth', `${this.windowWidth}px`)
     },
     methods: {
-      changePositionImgDom() {
-        const imgFront = document.getElementById("div1");
-        const imgBack = document.getElementById("div2");      }
+      consoleLog() {
+        console.log("test")      }
     }
   }
 </script>
@@ -77,13 +72,11 @@ import Overlay from '../components/Overlay'
   height: 60%;
   margin-top: 15%;
 }
-
 img {
   position: absolute;
   height: 100%;
   box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.2);
 }
-
 img:nth-child(1) {
   left: 50%;
   translate: -49% 4%;
