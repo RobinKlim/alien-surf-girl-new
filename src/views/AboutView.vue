@@ -6,7 +6,11 @@
       <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
     </div>
     <div class="card-deck">
-      <img v-for="(name, index) in names" :key="names[index]" @click="index == 4 ? moveImage() : ''" :src="require(`@/assets/SingleShots_Cards/Spielkarten_${name}.png`)">
+      <img id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png">
+      <img id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @click="moveImage">
+      <img id="cardPhilipp" src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png">
+      <img id="cardMorten" src="@/assets/SingleShots_Cards/Spielkarten_Morten.png">
+      <img id="cardRobin" src="@/assets/SingleShots_Cards/Spielkarten_Robin.png">
     </div>
   </div>
 </template>
@@ -31,11 +35,17 @@ import Overlay from '@/components/Overlay'
       // get windwow width
       this.windowWidth = document.querySelector('html').clientWidth;
       document.documentElement.style.setProperty('--windowWidth', `${this.windowWidth}px`)
+      // add eventlistener to Top card
+      if(5 == 5) {
+        console.log("sheesh")
+      }
     },
     methods: {
       moveImage() {
         console.log("test")
-        this.names.push(this.names.shift())
+        const value = document.getElementById("cardCyrus").style.getPropertyValue("z-index")
+        console.log(value)
+
       }
     }
   }
@@ -79,30 +89,35 @@ img {
   height: 100%;
   box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.2);
 }
-img:nth-child(1) {
+#cardJonas {
   left: 50%;
   translate: -49% 4%;
   rotate: 5deg;
+  z-index: 1;
 }
-img:nth-child(2) {
+#cardMorten {
   left: 50%;
   translate: -51% 2%;
   rotate: -3deg;
+  z-index: 2;
 }
-img:nth-child(3) {
+#cardPhilipp {
   left: 50%;
   translate: -49%;
   rotate: 2deg;
+  z-index: 3;
 }
-img:nth-child(4) {
+#cardRobin {
   left: 50%;
   translate: -51% -2%;
   rotate: -2deg;
+  z-index: 4;
 }
-img:nth-child(5) {
+#cardCyrus {
   left: 50%;
   translate: -49% -4%;
   rotate: 1deg;
+  z-index: 5;
   /* animation: SwipeTeaser 2s linear 3; */
 }
 
