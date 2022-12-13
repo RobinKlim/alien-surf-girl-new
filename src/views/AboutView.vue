@@ -6,7 +6,7 @@
       <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
     </div>
     <div class="card-deck">
-      <img v-for="(name, index) in names" :key="names[index]" @click="index == 4 ? consoleLog() : ''" :src="require(`@/assets/SingleShots/${name}.jpeg`)">
+      <img v-for="(name, index) in names" :key="names[index]" @click="index == 4 ? moveImage() : ''" :src="require(`@/assets/SingleShots_Cards/Spielkarten_${name}.png`)">
     </div>
   </div>
 </template>
@@ -33,8 +33,10 @@ import Overlay from '@/components/Overlay'
       document.documentElement.style.setProperty('--windowWidth', `${this.windowWidth}px`)
     },
     methods: {
-      consoleLog() {
-        console.log("test")      }
+      moveImage() {
+        console.log("test")
+        this.names.push(this.names.shift())
+      }
     }
   }
 </script>
@@ -69,7 +71,7 @@ import Overlay from '@/components/Overlay'
 /* KartenDeck */
 .card-deck {
   position: relative;
-  height: 60%;
+  height: 50%;
   margin-top: 15%;
 }
 img {
@@ -101,7 +103,7 @@ img:nth-child(5) {
   left: 50%;
   translate: -49% -4%;
   rotate: 1deg;
-  animation: SwipeTeaser 2s linear 3;
+  /* animation: SwipeTeaser 2s linear 3; */
 }
 
 /* Swipe Trigger Picture Front */
