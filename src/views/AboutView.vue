@@ -6,11 +6,11 @@
       <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
     </div>
     <div class="card-deck">
-      <img class="single-card" id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png" @click="moveImage">
-      <img class="single-card" id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @click="moveImage">
-      <img class="single-card" id="cardPhilipp" src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png" @click="moveImage">
-      <img class="single-card" id="cardMorten" src="@/assets/SingleShots_Cards/Spielkarten_Morten.png" @click="moveImage">
-      <img class="single-card" id="cardRobin" src="@/assets/SingleShots_Cards/Spielkarten_Robin.png" @click="moveImage">
+      <img class="single-card" id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+      <img class="single-card" id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+      <img class="single-card" id="cardPhilipp" src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+      <img class="single-card" id="cardMorten" src="@/assets/SingleShots_Cards/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+      <img class="single-card" id="cardRobin" src="@/assets/SingleShots_Cards/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ import Overlay from '@/components/Overlay'
       return {
         newsText: null,
         windowWidth: null,
-        names: ["Jonas", "Robin", "Philipp", "Cyrus", "Morten"],
+        fingerClickStartPositionY: null,
       }
     },
     mounted() {
@@ -36,40 +36,64 @@ import Overlay from '@/components/Overlay'
       this.windowWidth = document.querySelector('html').clientWidth;
       document.documentElement.style.setProperty('--windowWidth', `${this.windowWidth}px`)
       // add eventlistener to Top card
+      document.getElementById("cardCyrus").addEventListener("touchend", this.reorderImage);
     },
     methods: {
+      reorderImage(element) {
+          const zIndexTop = getComputedStyle(element).getPropertyValue("z-index")
+
+            //change order by changing zIndices
+            const allSingleCardsArr = document.getElementsByClassName("single-card");
+
+            for(let i = 0; i < allSingleCardsArr.length; i++){
+              const zIndex = getComputedStyle(allSingleCardsArr[i]).getPropertyValue("z-index")
+              if(zIndex == 1) {
+                allSingleCardsArr[i].style.zIndex = 2
+              }
+              if(zIndex == 2) {
+                allSingleCardsArr[i].style.zIndex = 3
+              }
+              if(zIndex == 3) {
+                allSingleCardsArr[i].style.zIndex = 4
+              }
+              if(zIndex == 4) {
+                allSingleCardsArr[i].style.zIndex = 5
+              }
+              if(zIndex == 5) {
+                allSingleCardsArr[i].style.zIndex = 1
+              }
+            }
+      },
+      saveClickPosition(e) {
+        this.fingerClickStartPositionX = e.changedTouches[0].pageX
+      },
       moveImage(e) {
-        const el = e.target  // clicked image
-        const zIndexTop = getComputedStyle(el).getPropertyValue("z-index")
-        console.log(e)
+
+        const clickedImage = e.target
+        const zIndexTop = getComputedStyle(clickedImage).getPropertyValue("z-index")
 
         // check if selected card is on top
         if(zIndexTop == 5) {
-          //change order by changing zIndices
-          const allSingleCardsArr = document.getElementsByClassName("single-card");
 
-          for(let i = 0; i < allSingleCardsArr.length; i++)
-          {
-            const zIndex = getComputedStyle(allSingleCardsArr[i]).getPropertyValue("z-index")
-            if(zIndex == 1) {
-              allSingleCardsArr[i].style.zIndex = 2
+          [...e.changedTouches].forEach(touch => {
+
+            const X = this.fingerClickStartPositionX - touch.pageX
+            clickedImage.style.left = 'calc(50% - ' + X + 'px)'
+
+            if(X > 70) {
+              clickedImage.style.left = '-100%'
+              this.reorderImage(clickedImage)
+              setTimeout(() => {
+                clickedImage.style.left = '50%'
+              }, 400);
             }
-            if(zIndex == 2) {
-              allSingleCardsArr[i].style.zIndex = 3
+            if (X < 0){
+              clickedImage.style.left = '50%'
             }
-            if(zIndex == 3) {
-              allSingleCardsArr[i].style.zIndex = 4
-            }
-            if(zIndex == 4) {
-              allSingleCardsArr[i].style.zIndex = 5
-            }
-            if(zIndex == 5) {
-              allSingleCardsArr[i].style.zIndex = 1
-            }
-          }
-          // el.style.zIndex = "0"
+          })
+
         }
-      }
+      },
     }
   }
 </script>
@@ -113,35 +137,30 @@ img {
   box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.2);
 }
 #cardJonas {
-  left: 50%;
   translate: -49% 4%;
   rotate: 5deg;
   z-index: 1;
 }
 #cardMorten {
-  left: 50%;
   translate: -51% 2%;
   rotate: -3deg;
   z-index: 2;
 }
 #cardPhilipp {
-  left: 50%;
   translate: -49%;
   rotate: 2deg;
   z-index: 3;
 }
 #cardRobin {
-  left: 50%;
   translate: -51% -2%;
   rotate: -2deg;
   z-index: 4;
 }
 #cardCyrus {
-  left: 50%;
   translate: -49% -4%;
   rotate: 1deg;
   z-index: 5;
-  /* animation: SwipeTeaser 2s linear 3; */
+  /*animation: SwipeTeaser 2s linear 3;*/
 }
 
 /* Swipe Trigger Picture Front */
@@ -160,5 +179,9 @@ img {
     }
 }
 
+.single-card{
+  left: 50%;
+  transition: all 0.2s ease-in-out;
+}
 
 </style>
