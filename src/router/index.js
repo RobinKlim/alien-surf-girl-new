@@ -4,6 +4,9 @@ import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
 import ShowsView from '../views/ShowsView.vue'
 import HitsView from '../views/HitsView.vue'
+import PressKitView from '../views/PressKitView.vue'
+import ShopView from '../views/ShopView.vue'
+import ImpressumView from '../views/ImpressumView.vue'
 
 const routes = [
   {
@@ -30,6 +33,21 @@ const routes = [
     path: '/hits',
     name: 'hits',
     component: HitsView
+  },  
+  {
+    path: '/shop',
+    name: 'shop',
+    component: ShopView
+  },
+  {
+    path: '/pressKit',
+    name: 'pressKit',
+    component: PressKitView
+  },
+  {
+    path: '/impressum',
+    name: 'impressum',
+    component: ImpressumView
   },
 
 ]

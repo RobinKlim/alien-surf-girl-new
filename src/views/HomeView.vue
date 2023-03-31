@@ -53,7 +53,7 @@ export default {
   align-items: center;
 }
 .cd-cover {
-  width: 80%;
+  width: 90%;
   animation: pulse 2s ease-in-out infinite;
   transition: 0.8s;
   z-index: 15;

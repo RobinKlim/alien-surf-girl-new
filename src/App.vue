@@ -1,10 +1,12 @@
 <template>
-  <img src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{ navigationSmall: menuSmall}" alt="">
+  <img src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{navigationSmall: menuSmall}" alt="">
   <nav class="navigation-home-list navigation" :class="{navigationSmall: menuSmall}">
     <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="about"  to="/ueber">Über uns</router-link>
     <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="hits"  to="/hits">Hits</router-link>
     <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="contact"  to="/kontakt">Kontakt</router-link>
+    <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="presskit"  to="/presskit">Pressekit</router-link>
     <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shows"  to="/shows">Shows</router-link>
+    <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shop"  to="/shop">Shop</router-link>
   </nav>
   <router-view :menuSmall='this.menuSmall'/>
 </template>
@@ -67,7 +69,7 @@ export default {
   bottom: 50%;
   left: 50%;
   transform: translate(-50%, 50%) rotate(0deg);
-  width: 70%;
+  width: 80%;
   transition: all 1s; 
   z-index: 11
   /* animation: rotation 10s linear; */
@@ -77,9 +79,9 @@ export default {
   height: var(--cDDimensions);
 }
 .navigationSmall {
-  width: 20%;
+  /* width: 20%; */
   bottom: 10%;
-  transform: translate(-50%, 50%) rotate(720deg);
+  transform: translate(-50%, 50%) rotate(720deg) scale(0.25);
   /* animation: rotation 10s linear infinite; */
 }
 .navigationSmall:hover {
@@ -96,7 +98,7 @@ export default {
 a {
   position: absolute;
   font-family: "SeaweedScript", Helvetica, Arial;
-  font-size: calc(var(--cDDimensions) / 12);
+  font-size: calc(var(--cDDimensions) / 14);
   transition: all 1s; 
   text-decoration: none;
 }
@@ -107,19 +109,25 @@ a {
   translate: -50%;
 }
 .navigation-home-list a:nth-child(2) {
-  left: 75%;
-  top: 50%;
-  translate: 0 -50%;
+  left: 70%;
+  top: 35%;
 }
 .navigation-home-list a:nth-child(3) {
+  left: 70%;
+  bottom: 35%;
+}
+.navigation-home-list a:nth-child(4) {
   bottom: 15%;
   left: 50%;
   translate: -50%;
 }
-.navigation-home-list a:nth-child(4) {
-  left: 10%;
-  top: 50%;
-  translate: 0 -50%;
+.navigation-home-list a:nth-child(5) {
+  right: 70%;
+  bottom: 35%;
+}
+.navigation-home-list a:nth-child(6) {
+  right: 70%;
+  top: 35%;
 }
 
 /* Rotate animation */

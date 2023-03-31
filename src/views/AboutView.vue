@@ -2,9 +2,7 @@
   <div class="about" >
     <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
     <Overlay></Overlay>
-    <div class="newsTextContainer zIndex5">
-      <p class="newsText">+++ Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. +++</p>
-    </div>
+    <InformationBar :informationText="this.informationText"></InformationBar>
     <div class="card-deck">
       <img class="single-card" id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage">
       <img class="single-card" id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
@@ -17,24 +15,19 @@
 
 <script>
 import Overlay from '@/components/Overlay'
+import InformationBar from '@/components/InformationBar'
 
   export default {
     props: ['menuSmall'],
-    components: { Overlay },
+    components: { Overlay, InformationBar },
     data() {
       return {
-        newsText: null,
         windowWidth: null,
         fingerClickStartPositionY: null,
+        informationText: "Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art."
       }
     },
     mounted() {
-      // get Header width
-      this.newsText = document.querySelector('.newsText').clientWidth;
-      document.documentElement.style.setProperty('--newsTextWidth', `${this.newsText}px`)
-      // get windwow width
-      this.windowWidth = document.querySelector('html').clientWidth;
-      document.documentElement.style.setProperty('--windowWidth', `${this.windowWidth}px`)
       // add eventlistener to Top card
       document.getElementById("cardCyrus").addEventListener("touchend", this.reorderImage);
     },
