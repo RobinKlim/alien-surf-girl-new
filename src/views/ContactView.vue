@@ -1,7 +1,7 @@
 <template>
   <div class="contact">
-    <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
-    <InformationBar :informationText="this.informationText"></InformationBar>
+    <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false"></Overlay>
+    <InformationBar v-if="mobileOrTablet" :informationText="this.informationText"></InformationBar>
     <div class="content">
       <div class="mail">
         <p>Alien Surf Girl GbR</p>
@@ -33,11 +33,11 @@ import Overlay from '../components/Overlay'
 import InformationBar from '../components/InformationBar.vue'
 
   export default {
-    props: ['menuSmall'],
+    props: ['menuSmall', 'mobileOrTablet'],
     components: { Overlay, InformationBar },
     data() {
       return {
-        informationText: "Anfragen für Gigs gerne über Email, ansonsten sind wir am besten über Instagram zu erreichen."
+        informationText: "Anfragen für Gigs bitte über Email, ansonsten sind wir am besten über Instagram zu erreichen."
       }
     }
   }
@@ -46,8 +46,10 @@ import InformationBar from '../components/InformationBar.vue'
 <style scoped>
 
   .contact {
+    position: relative;
     height: 100%;
   }
+
   .content {
     display: flex;
     height: 100%;
@@ -58,6 +60,9 @@ import InformationBar from '../components/InformationBar.vue'
   
   .content > * {
     padding-bottom: 15%;
+  }
+  content {
+    height: 100%;
   }
   .mail p {
     text-align: center;
@@ -72,4 +77,11 @@ import InformationBar from '../components/InformationBar.vue'
   img {
     height: 30px;
   }
+  @media (min-width: 1024px) {
+  .contact {
+    max-width: var(--desktopWidth);
+    margin: 0 auto
+  }
+}
+
 </style>

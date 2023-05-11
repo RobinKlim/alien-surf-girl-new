@@ -58,26 +58,28 @@
       </p>
       <br/>
       <p>@2023 Alien Surf Girl. All rights reserved.</p>
-
+      <SpacerBottom></SpacerBottom>
     </div>
 </div>
 </template>
 
 <script>
 import Overlay from '../components/Overlay'
+import SpacerBottom from '../components/SpacerBottom'
+
 
   export default {
     props: ['menuSmall'],
-    components: { Overlay },
+    components: { Overlay, SpacerBottom },
   }
 </script>
 
 <style scoped>
 .impressum {
   height: 100%;
+  overflow: scroll;
 }
 .impressumText {
-  height: 70%;
   padding: 1rem;
   overflow: scroll
 }

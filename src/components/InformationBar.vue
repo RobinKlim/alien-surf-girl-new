@@ -1,6 +1,6 @@
 <template>
   <div class="informationTextContainer zIndex1">
-      <p class="informationText"> +++ {{ this.informationText }} +++ </p>
+      <p class="informationText font-Audiowide"> +++ {{ this.informationText }} +++ {{ this.informationText }} +++</p>
   </div>
 </template>
 
@@ -27,8 +27,9 @@ mounted() {
 <style scoped>
 
 .informationTextContainer {
-position: relative;
+position: absolute;
 background-color: rgba(255, 255, 255);
+border-bottom: 2px solid black;
 }
 .informationText {
 width: max-content;

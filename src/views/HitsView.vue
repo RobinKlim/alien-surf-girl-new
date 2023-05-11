@@ -1,7 +1,8 @@
 <template>
   <div class="hits">
-    <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
-    <InformationBar :informationText="this.informationText"></InformationBar>
+    <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false"></Overlay>
+    <InformationBar v-if="mobileOrTablet" :informationText="this.informationText" ></InformationBar>
+    <SpacerTop v-if="mobileOrTablet"></SpacerTop>
     <div class="videos">
       <div v-for="(value, key) in musicVideos" :key="key" :value="value">
         <div class="videoSingle">
@@ -13,6 +14,7 @@
           />    
         </div>
       </div>
+      <SpacerBottom></SpacerBottom>
     </div>
   </div>
 </template>
@@ -20,6 +22,8 @@
 <script setup>
 import Overlay from '../components/Overlay'
 import InformationBar from '../components/InformationBar'
+import SpacerTop from '../components/SpacerTop'
+import SpacerBottom from '../components/SpacerBottom'
 import { ref } from 'vue'
 import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
 import 'vue-lite-youtube-embed/style.css'
@@ -49,29 +53,42 @@ iframe.value?.playVideo()
             id: "hzKgcljKxiI",
             title: "Alien Surf Girl - Toy Boy (Offizielles Musikvideo)"
           },
+          toyBoy2: {
+            id: "hzKgcljKxiI",
+            title: "Alien Surf Girl - Toy Boy (Offizielles Musikvideo)"
+          },
         },
-        informationText: "Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art."
+        informationText: "Groovige Basslines à la Parcels, eingängige Synthy-Klängen von The Weeknd und geschmackvoller Gesang inspiriert von Falco. Dazu eine Prise Disco-Gitarre und tanzbare four-on-the-floor Beats."
       }
     },
-    props: ['menuSmall'],
-    components: { Overlay, InformationBar }
+    props: ['menuSmall', 'mobileOrTablet'],
+    components: { Overlay, InformationBar, SpacerTop, SpacerBottom }
   }
 </script>
 
 <style scoped>
 .hits {
   height: 100%;
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 p, h1 {
   padding: 5%;
 }
 .videoSingle {
-  padding:  0.5rem 0;
+  padding-bottom: 1rem;
 }
 .videos {
-  height: 70%;
-  padding: 1rem;
+  height: 100%;
+  padding: 0rem 1rem;
   overflow: scroll;
+}
+@media (min-width: 1024px) {
+  .hits {
+    max-width: var(--screenWidth);
+    margin: 0 auto
+  }
 }
 
 

@@ -16,25 +16,42 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	letter-spacing: 0.05em;
-	font-family: 'Montserrat';
+	font-family: Helvetica, Arial, sans-serif;
 	line-height: 1.325em;
-	font: inherit;
 	vertical-align: baseline;
 }
+h2 {
+	text-align: center;
+	font-family: streamsterregular, Arial, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 3.5rem;
+  }
+  html {
+	background-image: linear-gradient(90deg, #d7eefd, #fff4f4);
+  }
+  
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+.font-Audiowide {
+	font-family: Audiowide-Regular, Arial, sans-serif !important;
+}
+@font-face {
+	font-family: "Audiowide-Regular";
+	src: url("@/assets/fonts/Audiowide-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+  }
+
 html {
     height: 100%;
-	background-image: url("@/assets/Bandshot_roof.jpg");
-	background-size: cover;
-	background-position: center center;  
-	background-attachment: fixed;
 	overflow: hidden;
 	width: 100%;
 }
+
 body {
 	line-height: 1;
 	height: 100%;
@@ -90,4 +107,8 @@ button:hover {
 	background-color: #509ae9; /* Hintergrundfarbe beim Überfahren mit der Maus */
 	cursor: pointer; /* Mauszeiger ändern */
 }
-  
+
+:root {
+	--screenWidth: 1440px;
+	--desktopWidth: 1024px;
+  }

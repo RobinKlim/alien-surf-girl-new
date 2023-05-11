@@ -51,6 +51,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("@/assets/PICS/Bandshot_Glitch_hoch_rb.jpg");
+  background-size: cover;
+  background-position: center center;  
+  background-attachment: fixed;
 }
 .cd-cover {
   width: 90%;
