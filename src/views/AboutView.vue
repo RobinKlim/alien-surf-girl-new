@@ -1,25 +1,40 @@
 <template>
   <div class="about">
-    <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false"></Overlay>
-
-    <InformationBar :informationText="this.informationText" v-if="mobileOrTablet"></InformationBar>
-    <SpacerTop></SpacerTop>
-    <SpacerTop v-if="mobileOrTablet"></SpacerTop>
-    <div class="card-deck"  v-if="mobileOrTablet">
-      <img class="single-card" id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage" >
-      <img class="single-card" id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-      <img class="single-card" id="cardPhilipp" src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-      <img class="single-card" id="cardMorten" src="@/assets/SingleShots_Cards/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-      <img class="single-card" id="cardRobin" src="@/assets/SingleShots_Cards/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-    </div>    
-    <div class="card-desktop" v-else>
-      <img src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png">
-      <img src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png">
-      <img src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png">
-      <img src="@/assets/SingleShots_Cards/Spielkarten_Morten.png">
-      <img src="@/assets/SingleShots_Cards/Spielkarten_Robin.png">
+    <div v-if="mobileOrTablet" class="mobileContainer">
+      <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
+      <InformationBar :informationText="this.informationText"></InformationBar>
+      <SpacerTop></SpacerTop>
+      <SpacerTop ></SpacerTop>
+      <div class="card-deck">
+        <img class="single-card" id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage" >
+        <img class="single-card" id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardPhilipp" src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardMorten" src="@/assets/SingleShots_Cards/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardRobin" src="@/assets/SingleShots_Cards/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+      </div>    
     </div>
-    <SpacerTop v-if="!mobileOrTablet"></SpacerTop>
+    <div v-else>
+      <div class="bandshotContainer">
+        <img class="bandShot bandShotClean" src="@/assets/PICS/Bandshot_Clean_web.jpg" alt="">
+        <img class="bandShot bandShotGlitch" src="@/assets/PICS/Bandshot_Glitch_quer_rb.jpg" alt="">
+        <p> {{ informationText }}</p>
+      </div>
+      <div class="card-desktop" >
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png">
+        <img src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png">
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png">
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Morten.png">
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Robin.png">
+      </div>      <div class="card-desktop" >
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png">
+        <img src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png">
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png">
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Morten.png">
+        <img src="@/assets/SingleShots_Cards/Spielkarten_Robin.png">
+      </div>
+
+      <SpacerTop></SpacerTop>
+    </div>
   </div>
 </template>
 
@@ -110,6 +125,9 @@ import SpacerTop from '@/components/SpacerTop'
   position: relative;
   height: 100%;
 }
+.mobileContainer {
+  height: 100%;
+}
 /* Moving News header */
 .newsTextContainer {
   position: relative;
@@ -183,24 +201,76 @@ img {
 
 @media (min-width: 1024px) {
   .about {
-    max-width: var(--screenWidth);
-    margin: 0 auto
+    max-width: var(--desktopWidth);
+    margin: 0 auto;
   }
   .card-desktop {
     position: relative;
     display: flex;
-    height: 300px;
+    height: fit-content;
+    width: 100%;
   }
 
   .about {
-    overflow: scroll;
   }
 
-  img {
+  .card-desktop img {
+    display: block;
     position: relative;
+    width: 20%;
+    transform: translate(0px, -0px);
+    transition: all 0.2s ease-in-out;
+    z-index: 5;
 }
-
+.card-desktop img:hover {
+  transform: translate(0px, -15px);
+  transition: all 0.2s ease-in-out;
 }
-
+.bandShot {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.bandshotContainer {
+  position: relative;
+}
+.bandshotContainer p {
+  position: absolute;
+  z-index: 5;
+  top: 50px;
+  left: 50px;
+  width: 20%;
+  text-align: justify;
+}
+.bandShotGlitch {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  animation: changeZIndex 10s infinite;
+}
+@keyframes changeZIndex {
+      0% { z-index: -1; }
+      19% { z-index: -1; }
+      20% { z-index: 1; }
+      25.1% { z-index: -1; }
+      25.2% { z-index: 1; }
+      25.5% { z-index: -1; }
+      25.9% { z-index: 1; }
+      21% { z-index: -1; }
+      46% { z-index: -1; }
+      46% { z-index: 1; }
+      46.5% { z-index: -1; }
+      46.9% { z-index: 1; }
+      48% { z-index: -1; }
+      50% { z-index: -1; }
+      51% { z-index: 1; }
+      52% { z-index: -1; }
+      55% { z-index: 1; }
+      56% { z-index: -1; }
+      60% { z-index: 1; }
+      61% { z-index: -1; }
+      100% { z-index: -1; }
+    }
+}
 
 </style>

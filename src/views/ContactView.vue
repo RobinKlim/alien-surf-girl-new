@@ -8,17 +8,17 @@
         <p>aliensurfgirl.official@gmail.com</p>
       </div>
       <div class="social-media">
-        <a href="https://open.spotify.com/artist/5HJnjbg0jin1bXgPVKewQi?si=So8VMe_dS0CDYV2GzRmHuQ&dl_branch=1">
-          <img src="/spotify.svg" alt="" />
+        <a href="https://open.spotify.com/artist/5HJnjbg0jin1bXgPVKewQi?si=FwWzzR1CTbGTEWAk3_Sdmw">
+          <img src="/spotify.svg" class="svg-icon" alt="" />
         </a>
         <a href="https://www.youtube.com/channel/UCDReVbsgHdMurAxZqj661hg">
-          <img src="youtube.svg" alt="" />
+          <img src="youtube.svg" class="svg-icon" alt="" />
         </a>
         <a href="https://www.instagram.com/aliensurfgirlofficial">
-          <img src="instagram.svg" alt="" />
+          <img src="instagram.svg" class="svg-icon" alt="" />
         </a>
         <a href="https://www.tiktok.com/@aliensurfgirl">
-          <img src="tiktok.svg" alt="" />
+          <img src="tiktok.svg" class="svg-icon" alt="" />
         </a>
       </div>
       <router-link to="/impressum">
@@ -45,10 +45,10 @@ import InformationBar from '../components/InformationBar.vue'
 
 <style scoped>
 
-  .contact {
-    position: relative;
-    height: 100%;
-  }
+.contact {
+  position: relative;
+  height: 100%;
+}
 
   .content {
     display: flex;
@@ -56,10 +56,7 @@ import InformationBar from '../components/InformationBar.vue'
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  }
-  
-  .content > * {
-    padding-bottom: 15%;
+    row-gap: 5%;
   }
   content {
     height: 100%;
@@ -74,6 +71,14 @@ import InformationBar from '../components/InformationBar.vue'
     align-items: center;
   }
 
+  .social-media a img {
+    transition: all 0.2s ease-in-out;
+  }
+  .social-media a img:active, .social-media a img:hover {
+    filter: invert(46%) sepia(99%) saturate(752%) hue-rotate(194deg) brightness(105%) contrast(93%);
+  transform: scale(1.5);
+    }
+
   img {
     height: 30px;
   }
@@ -81,6 +86,20 @@ import InformationBar from '../components/InformationBar.vue'
   .contact {
     max-width: var(--desktopWidth);
     margin: 0 auto
+  }
+  .svg-icon {
+    fill: black;
+  }
+  .social-media {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .contact {
+  position: relative;
+  height: 50%;
   }
 }
 

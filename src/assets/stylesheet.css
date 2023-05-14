@@ -17,7 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	letter-spacing: 0.05em;
 	font-family: Helvetica, Arial, sans-serif;
-	line-height: 1.325em;
+	line-height: 1.5em;
 	vertical-align: baseline;
 }
 h2 {
@@ -94,10 +94,9 @@ h1 {
 	font-size: 2rem;
 }
 button {
-	background-color: #ffffff; /* Hintergrundfarbe des Buttons */
-	border: none; 
+	background-color: #ffffff00; 
 	color: #000000; /* Schriftfarbe */
-	padding: 8px 12px; /* Innenabstand */
+	padding: 20px 24px; /* Innenabstand */
 	border-radius: 4px; /* Abgerundete Ecken */
 	font-size: 16px; /* Schriftgröße */
 	transition: all 0.2s ease-in-out; /* Animationsdauer und Übergangseffekt */
@@ -111,4 +110,6 @@ button:hover {
 :root {
 	--screenWidth: 1440px;
 	--desktopWidth: 1024px;
+	--screenHeight: null;
+	--headerHeight: null;
   }

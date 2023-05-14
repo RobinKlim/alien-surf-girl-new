@@ -4,28 +4,13 @@
     <InformationBar v-if="mobileOrTablet" :informationText="this.informationText"></InformationBar>
     <SpacerTop v-if="mobileOrTablet" ></SpacerTop>
     <div class="gigsCtr">
-      <article class="gigSingle">
-        <h2>Konzert-Titel</h2>
-        <p><strong>Datum:</strong> 01. April 2023</p>
-        <p><strong>Uhrzeit:</strong> 20:00 Uhr</p>
-        <p><strong>Veranstaltungsort:</strong> Musterhalle, Musterstraße 1, 12345 Musterstadt</p>
-        <p><strong>Eintrittspreis:</strong> 25,00 €</p>
-        <p><strong>Veranstalter:</strong> Max Mustermann Konzertagentur</p>
-        <p><strong>Webseite:</strong> <a href="https://www.example.com">www.example.com</a></p>
-      </article>
+      <div class="songkick-widget-container">
+        <a href="https://www.songkick.com/artists/10228142" class="songkick-widget" data-theme="dark" data-track-button="on" data-detect-style="on" data-background-color="rgb(0,0,0,1)" data-font-color="rgb(255,255,255,1)" data-locale="en" data-other-artists="on" data-share-button="on" data-country-filter="on"></a>
+      </div>
       <LiteYouTubeEmbed
           id="dQw4w9WgXcQ"
           title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
         />
-      <!-- <article class="gigSingle">
-        <h2>Konzert-Titel</h2>
-        <p><strong>Datum:</strong> 01. April 2023</p>
-        <p><strong>Uhrzeit:</strong> 20:00 Uhr</p>
-        <p><strong>Veranstaltungsort:</strong> Musterhalle, Musterstraße 1, 12345 Musterstadt</p>
-        <p><strong>Eintrittspreis:</strong> 25,00 €</p>
-        <p><strong>Veranstalter:</strong> Max Mustermann Konzertagentur</p>
-        <p><strong>Webseite:</strong> <a href="https://www.example.com">www.example.com</a></p>
-      </article> -->
       <SpacerBottom></SpacerBottom>
     </div>
   </div>
@@ -55,6 +40,12 @@
       return {
         informationText: "Die Hits von Alien Surf Girl wollen live gehört werden. Komm zu unseren nächsten Konzerten!"
       }
+    },
+    mounted() {
+    // Skript zum Laden des Songkick-Widgets
+      const script = document.createElement('script');
+      script.src = '//widget-app.songkick.com/injector';
+      document.body.appendChild(script);
     }
   }
 </script>
@@ -74,8 +65,11 @@
 }
 @media (min-width: 1024px) {
   .shows {
-    max-width: var(--screenWidth);
+    max-width: var(--desktopWidth);
     margin: 0 auto
+  }
+  .gigsCtr {
+    padding: 0;
   }
 }
 

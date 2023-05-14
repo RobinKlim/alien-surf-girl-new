@@ -1,6 +1,6 @@
 <template>
   <div class="impressum">
-    <Overlay v-show="menuSmall == false"></Overlay>
+    <Overlay v-if="this.mobileOrTablet" v-show="menuSmall == false"></Overlay>
     <div class="header">
       <h1>Impressum</h1>
       <router-link to="/kontakt">
@@ -90,4 +90,16 @@ import SpacerBottom from '../components/SpacerBottom'
   display: flex;
   justify-content: space-between;
 }
+@media (min-width: 1024px) {
+  .impressum {
+    overflow: auto;
+    max-width: var(--desktopWidth);
+    margin: 0 auto;
+  }
+  .impressumText {
+    overflow: auto;
+  }
+
+}
+
 </style>

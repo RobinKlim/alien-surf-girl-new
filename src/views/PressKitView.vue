@@ -95,6 +95,9 @@
     max-width: var(--desktopWidth);
     margin: 0 auto
   }
+  .pressCtr {
+    padding: 0;
+  }
 }
 
 

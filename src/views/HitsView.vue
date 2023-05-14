@@ -11,6 +11,7 @@
           :id=value.id
           ref="iframe"
           :title=value.title
+          poster="maxresdefault"
           />    
         </div>
       </div>
@@ -86,8 +87,11 @@ p, h1 {
 }
 @media (min-width: 1024px) {
   .hits {
-    max-width: var(--screenWidth);
+    max-width: var(--desktopWidth);
     margin: 0 auto
+  }
+  .videos {
+    padding: 0;
   }
 }
 

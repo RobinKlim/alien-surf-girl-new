@@ -9,6 +9,7 @@
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shop"  to="/shop">Shop</router-link>
     </nav>
     <nav v-else class="navigation-desktop zIndex15">
+      <h1 class="headline">Alien Surf Girl</h1>
       <div class="navigation-container">
         <router-link class="about"  to="/ueber">Über uns</router-link>
         <router-link class="hits"  to="/hits">Hits</router-link>
@@ -35,7 +36,7 @@ export default{
   },
   methods: {
     // Breite der CD bekommen als CSS Variable
-    getWidth() {
+    getDimensions() {
       this.screenWidth = document.querySelector('.navigation-home-list').clientWidth;
       
       this.cdDimensions = this.screenWidth < document.querySelector('.navigation-home-list').clientWidth ? this.screenWidth : this.screenWidth/2
@@ -46,7 +47,6 @@ export default{
     // grow/shrink menu 
     resizeMenu() {
 
-
       // shrink menu
       if(this.menuSmall == false) {
         setTimeout(()=> {document.querySelector(".navigation-home-list").addEventListener("click", this.resizeMenu);}, 1);
@@ -54,12 +54,11 @@ export default{
         const navigation = document.querySelectorAll(".navigation");
         navigation.forEach(element => {
           element.style.transform = `translate(-50%, 50%) rotate(${360+this.rotationFirstDone}deg) scale(0.25)`;
-          element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 1s";
+          element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 0.7s";
         });
 
         this.menuSmall = true;
       }
-
 
       // grow menu
       else {
@@ -83,14 +82,14 @@ export default{
       }
     },
   },
-  // Breite der CD bekommen als CSS Variable und getWidth bei resize triggern
+  // Breite der CD bekommen als CSS Variable und getDimensions bei resize triggern
   mounted() {
-    window.addEventListener('resize', this.getWidth);
-    this.getWidth();
+    window.addEventListener('resize', this.getDimensions);
+    this.getDimensions();
     document.documentElement.style.setProperty('--screenWidth', `${this.screenWidth}px`);
     },
   unmounted() {
-    window.removeEventListener('resize', this.getWidth);
+    window.removeEventListener('resize', this.getDimensions);
   },
 
 }
@@ -105,7 +104,7 @@ export default{
   left: 50%;
   transform: translate(-50%, 50%) rotate(0deg) scale(1);
   width: 80%;
-  transition: all linear 1s; 
+  transition: all linear 0.7s; 
   z-index: 11;
 }
 .navigationSmall {
@@ -114,13 +113,13 @@ export default{
 
 .navigation-home-list{
   z-index: 12;
-  transition: all linear 1s; 
+  transition: all linear 0.7s; 
   height: var(--screenWidth);
 }
 
 .navigation-desktop {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .disableClick {
@@ -133,9 +132,10 @@ export default{
 }
 a {
   position: absolute;
-  font-family: "SeaweedScript", Helvetica, Arial;
-  font-size: calc(var(--screenWidth) / 14);
+  font-family: Audiowide-Regular, Arial, sans-serif !important;
+  font-size: calc(var(--screenWidth) / 20);
   text-decoration: none;
+  color: #000; /* Weißer Font */
 }
 
 .navigation-home-list a:nth-child(1) {
@@ -213,13 +213,23 @@ a:hover {
 	background-size: contain;
 	background-repeat: no-repeat;
 	transition: transform 0.3s ease;
-	transform: translate(-50%, -50%) scale(0);
+	transform: translate(-50%, -50%) scale(0) rotate(0deg);
   z-index: -1;
 }
   
   a:hover::after {
-	transform: translate(-50%, -50%) scale(3);
+	transform: translate(-50%, -50%) scale(3) rotate(360deg);
   }
+
+  .headline {
+    z-index: 15;
+    font-size: 4rem;
+    color: white;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    font-family: Audiowide-Regular, Arial, sans-serif !important;
+    text-align: center;
+  }
+
   
 }
 
