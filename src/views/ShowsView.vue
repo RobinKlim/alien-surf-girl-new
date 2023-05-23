@@ -5,11 +5,13 @@
     <SpacerTop v-if="mobileOrTablet" ></SpacerTop>
     <div class="gigsCtr">
       <div class="songkick-widget-container">
-        <a href="https://www.songkick.com/artists/10228142" class="songkick-widget" data-theme="dark" data-track-button="on" data-detect-style="on" data-background-color="rgb(0,0,0,1)" data-font-color="rgb(255,255,255,1)" data-locale="en" data-other-artists="on" data-share-button="on" data-country-filter="on"></a>
+        <a href="https://www.songkick.com/artists/10228142" class="songkick-widget" data-theme="dark" data-track-button="on" data-detect-style="on" data-background-color="rgb(0,0,0,1)" data-font-color="rgb(255,255,255,1)" data-locale="en" data-other-artists="on" data-share-button="on" data-country-filter="on"
+></a>
       </div>
       <LiteYouTubeEmbed
-          id="dQw4w9WgXcQ"
-          title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
+          id="94RzTmH9it8"
+          title="Alien Surf Girl - Aliens im Wunderland (Live im Knust)"
+          poster="maxresdefault"
         />
       <SpacerBottom></SpacerBottom>
     </div>
@@ -58,20 +60,34 @@
 .gigsCtr {
   height: 100%;
   padding: 0rem 1rem;
-  overflow: scroll;
+  overflow: auto;
 }
 .gigSingle{
   padding-bottom: 1rem;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .shows {
-    max-width: var(--desktopWidth);
+    max-width: 100%;
     margin: 0 auto
   }
   .gigsCtr {
     padding: 0;
   }
 }
+
+@media (min-width: 900px) {
+  .shows {
+    max-width: var(--desktopWidthSmall);
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .shows {
+    max-width: var(--desktopWidth);
+  }
+}
+
 
 
 </style>

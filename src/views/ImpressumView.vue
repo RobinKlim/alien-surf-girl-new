@@ -77,11 +77,11 @@ import SpacerBottom from '../components/SpacerBottom'
 <style scoped>
 .impressum {
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
 }
 .impressumText {
   padding: 1rem;
-  overflow: scroll
+  overflow: auto;
 }
 .imprintBTN {
   margin: 1rem;
@@ -90,16 +90,29 @@ import SpacerBottom from '../components/SpacerBottom'
   display: flex;
   justify-content: space-between;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .impressum {
     overflow: auto;
-    max-width: var(--desktopWidth);
+    max-width: 100%;
     margin: 0 auto;
   }
   .impressumText {
-    overflow: auto;
+    padding: 0;
   }
-
 }
+
+@media (min-width: 900px) {
+  .impressum {
+    max-width: var(--desktopWidthSmall);
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .impressum {
+    max-width: var(--desktopWidth);
+  }
+}
+
 
 </style>

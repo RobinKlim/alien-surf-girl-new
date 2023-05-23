@@ -9,11 +9,11 @@
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shop"  to="/shop">Shop</router-link>
     </nav>
     <nav v-else class="navigation-desktop zIndex15">
-      <h1 class="headline">Alien Surf Girl</h1>
       <div class="navigation-container">
         <router-link class="about"  to="/ueber">Über uns</router-link>
         <router-link class="hits"  to="/hits">Hits</router-link>
         <router-link class="contact"  to="/kontakt">Kontakt</router-link>
+        <h1 class="headline">Alien Surf Girl</h1>
         <router-link class="presskit"  to="/presskit">Pressekit</router-link>
         <router-link class="shows"  to="/shows">Shows</router-link>
         <router-link class="shop"  to="/shop">Shop</router-link>
@@ -42,7 +42,7 @@ export default{
       this.cdDimensions = this.screenWidth < document.querySelector('.navigation-home-list').clientWidth ? this.screenWidth : this.screenWidth/2
       document.documentElement.style.setProperty('--screenWidth', `${this.screenWidth}px`);
 
-      this.mobileOrTablet = window.innerWidth < 1024 ? true : false;
+      this.mobileOrTablet = window.innerWidth < 768 ? true : false;
     },
     // grow/shrink menu 
     resizeMenu() {
@@ -135,7 +135,8 @@ a {
   font-family: Audiowide-Regular, Arial, sans-serif !important;
   font-size: calc(var(--screenWidth) / 20);
   text-decoration: none;
-  color: #000; /* Weißer Font */
+  color: #000;
+  white-space: nowrap;
 }
 
 .navigation-home-list a:nth-child(1) {
@@ -176,7 +177,7 @@ a {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   a {
   position: relative;
   font-size: 1rem;
@@ -193,10 +194,11 @@ a:hover {
 }
 
 .navigation-container {
-  width: var(--desktopWidth);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .navigation-desktop {
   border-bottom: 2px solid black;
@@ -218,20 +220,34 @@ a:hover {
 }
   
   a:hover::after {
-	transform: translate(-50%, -50%) scale(3) rotate(360deg);
+	transform: translate(-50%, -50%) scale(2) rotate(360deg);
   }
 
   .headline {
     z-index: 15;
-    font-size: 4rem;
+    padding: 0;
+    font-size: 2.5rem;
     color: white;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
     font-family: Audiowide-Regular, Arial, sans-serif !important;
     text-align: center;
   }
-
-  
 }
+
+.impressumText {
+  padding: 1rem;
+  overflow: auto
+}
+
+@media (min-width: 1440px) {
+  .navigation-container {
+    max-width: 1920px;
+  }
+  .headline {
+    font-size: 4rem;
+  }
+}
+
 
 </style>
 

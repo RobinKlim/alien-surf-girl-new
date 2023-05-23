@@ -10,10 +10,16 @@ import ImpressumView from '../views/ImpressumView.vue'
 
 const routes = [
   {
+    path: '/ueber',
+    name: 'ueber',
+    component: AboutView
+  },
+  {
     path: '/',
     name: 'home',
-    component: HomeView
-  },
+    component: AboutView,
+    alias: '/ueber'
+  },  
   {
     path: '/ueber',
     name: 'ueber',
@@ -49,7 +55,6 @@ const routes = [
     name: 'impressum',
     component: ImpressumView
   },
-
 ]
 
 const router = createRouter({

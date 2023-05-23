@@ -15,7 +15,7 @@
           />    
         </div>
       </div>
-      <SpacerBottom></SpacerBottom>
+      <SpacerBottom v-if="mobileOrTablet"></SpacerBottom>
     </div>
   </div>
 </template>
@@ -54,10 +54,6 @@ iframe.value?.playVideo()
             id: "hzKgcljKxiI",
             title: "Alien Surf Girl - Toy Boy (Offizielles Musikvideo)"
           },
-          toyBoy2: {
-            id: "hzKgcljKxiI",
-            title: "Alien Surf Girl - Toy Boy (Offizielles Musikvideo)"
-          },
         },
         informationText: "Groovige Basslines à la Parcels, eingängige Synthy-Klängen von The Weeknd und geschmackvoller Gesang inspiriert von Falco. Dazu eine Prise Disco-Gitarre und tanzbare four-on-the-floor Beats."
       }
@@ -71,7 +67,6 @@ iframe.value?.playVideo()
 .hits {
   height: 100%;
   position: relative;
-  max-width: 1440px;
   margin: 0 auto;
 }
 p, h1 {
@@ -83,17 +78,31 @@ p, h1 {
 .videos {
   height: 100%;
   padding: 0rem 1rem;
-  overflow: scroll;
+  overflow: auto;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hits {
-    max-width: var(--desktopWidth);
+    max-width: 100%;
     margin: 0 auto
   }
   .videos {
     padding: 0;
   }
 }
+
+@media (min-width: 900px) {
+  .hits {
+    max-width: var(--desktopWidthSmall);
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .hits {
+    max-width: var(--desktopWidth);
+  }
+}
+
 
 
 </style>

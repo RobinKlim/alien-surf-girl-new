@@ -56,10 +56,7 @@ import InformationBar from '../components/InformationBar.vue'
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    row-gap: 5%;
-  }
-  content {
-    height: 100%;
+    row-gap: 2rem;
   }
   .mail p {
     text-align: center;
@@ -82,9 +79,9 @@ import InformationBar from '../components/InformationBar.vue'
   img {
     height: 30px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
   .contact {
-    max-width: var(--desktopWidth);
+    max-width: 100%;
     margin: 0 auto
   }
   .svg-icon {
@@ -102,5 +99,11 @@ import InformationBar from '../components/InformationBar.vue'
   height: 50%;
   }
 }
+@media (min-width: 1440px) {
+  .contact {
+    max-width: var(--desktopWidth);
+  }
+}
+
 
 </style>

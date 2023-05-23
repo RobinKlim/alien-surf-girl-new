@@ -96,6 +96,7 @@ h1 {
 button {
 	background-color: #ffffff00; 
 	color: #000000; /* Schriftfarbe */
+	border-color: #000000;
 	padding: 20px 24px; /* Innenabstand */
 	border-radius: 4px; /* Abgerundete Ecken */
 	font-size: 16px; /* Schriftgröße */
@@ -103,13 +104,17 @@ button {
   }
   
 button:hover {
-	background-color: #509ae9; /* Hintergrundfarbe beim Überfahren mit der Maus */
+	background-color: var(--blue); /* Hintergrundfarbe beim Überfahren mit der Maus */
 	cursor: pointer; /* Mauszeiger ändern */
 }
 
 :root {
 	--screenWidth: 1440px;
 	--desktopWidth: 1024px;
+	--desktopWidthSmall: 768px;
 	--screenHeight: null;
 	--headerHeight: null;
+
+	--blue: #509ae9;
   }
+

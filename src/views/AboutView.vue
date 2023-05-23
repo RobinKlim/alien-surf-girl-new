@@ -1,38 +1,32 @@
 <template>
   <div class="about">
+    <CDCaseMobile v-if="renderCDCaseMobile && mobileOrTablet" @cd-clicked="() => { renderCDCaseMobile = false; }"></CDCaseMobile>
     <div v-if="mobileOrTablet" class="mobileContainer">
       <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
       <InformationBar :informationText="this.informationText"></InformationBar>
       <SpacerTop></SpacerTop>
       <SpacerTop ></SpacerTop>
       <div class="card-deck">
-        <img class="single-card" id="cardJonas" src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage" >
-        <img class="single-card" id="cardCyrus" src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-        <img class="single-card" id="cardPhilipp" src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-        <img class="single-card" id="cardMorten" src="@/assets/SingleShots_Cards/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-        <img class="single-card" id="cardRobin" src="@/assets/SingleShots_Cards/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardJonas" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage" >
+        <img class="single-card" id="cardCyrus" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardPhilipp" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardMorten" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardRobin" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
       </div>    
     </div>
     <div v-else>
       <div class="bandshotContainer">
-        <img class="bandShot bandShotClean" src="@/assets/PICS/Bandshot_Clean_web.jpg" alt="">
-        <img class="bandShot bandShotGlitch" src="@/assets/PICS/Bandshot_Glitch_quer_rb.jpg" alt="">
+        <img class="bandShot bandShotClean" src="@/assets/PICS/cropped/Bandshot_Clean_Free.png" alt="">
+        <img v-if="!hoveredSingle" class="bandShot bandShotGlitch" src="@/assets/PICS/cropped/Glitch_cp.png" alt="">
         <p> {{ informationText }}</p>
       </div>
       <div class="card-desktop" >
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png">
-        <img src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png">
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png">
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Morten.png">
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Robin.png">
-      </div>      <div class="card-desktop" >
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Jonas.png">
-        <img src="../assets/SingleShots_Cards/Spielkarten_Cyrus.png">
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Philipp.png">
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Morten.png">
-        <img src="@/assets/SingleShots_Cards/Spielkarten_Robin.png">
-      </div>
-
+        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Jonas.png" data-card="Jonas" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Cyrus.png" data-card="Cyrus" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Philipp.png" data-card="Philipp" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Morten.png" data-card="Morten" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Robin.png" data-card="Robin" @mouseenter="togglePicture" @mouseleave="leavePicture">
+      </div>      
       <SpacerTop></SpacerTop>
     </div>
   </div>
@@ -42,12 +36,23 @@
 import Overlay from '@/components/Overlay'
 import InformationBar from '@/components/InformationBar'
 import SpacerTop from '@/components/SpacerTop'
+import CDCaseMobile from '@/components/CDCaseMobile'
 
   export default {
     props: ['menuSmall', 'mobileOrTablet'],
-    components: { Overlay, InformationBar, SpacerTop},
+    components: { Overlay, InformationBar, SpacerTop, CDCaseMobile},
     data() {
       return {
+        preloadedImages: {
+          Jonas: '',
+          Cyrus: '',
+          Philipp: '',
+          Morten: '',
+          Robin: '',
+          bandShot: ''
+        },
+        renderCDCaseMobile: true,
+        hoveredSingle: false,
         windowWidth: null,
         fingerClickStartPositionY: null,
         zIndexTop: null,
@@ -56,9 +61,18 @@ import SpacerTop from '@/components/SpacerTop'
         informationText: "Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Band. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art."
       }
     },
+    mounted() {
+      if(!this.mobileOrTablet) {
+        this.animateCards();
+        this.preloadImages()
+        setInterval(() => {
+          this.animateCards();
+        }, 5000);
+      };
+    },
+
     methods: {
       reorderImage(element) {
-        // console.log("element")
         this.zIndexTop = getComputedStyle(element).getPropertyValue("z-index")
 
           //change order by changing zIndices
@@ -83,12 +97,13 @@ import SpacerTop from '@/components/SpacerTop'
             }
           }
       },
+
       saveClickPosition(e) {
         this.fingerClickStartPositionX = e.changedTouches[0].pageX
       },
+
       moveImage(e) {
         this.clickedImage = e.target
-        // console.log(this.clickedImage)
         this.zIndexTop = getComputedStyle(this.clickedImage).getPropertyValue("z-index")
 
         // check if selected card is on top
@@ -112,6 +127,62 @@ import SpacerTop from '@/components/SpacerTop'
             }
           })
 
+        }
+      },
+
+      preloadImages() {
+      const imagePaths = {
+        Jonas: require('@/assets/PICS/cropped_sitting/Jonas_sitting.png'),
+        Cyrus: require('@/assets/PICS/cropped_sitting/Cyrus_sitting.png'),
+        Philipp: require('@/assets/PICS/cropped_sitting/Philipp_sitting.png'),
+        Morten: require('@/assets/PICS/cropped_sitting/Morten_sitting.png'),
+        Robin: require('@/assets/PICS/cropped_sitting/Robin_sitting.png'),
+        bandShot: require('@/assets/PICS/cropped/Bandshot_Clean_Free.png'),
+      };
+        Object.entries(imagePaths).forEach(([key, src]) => {
+          const tempImage = new Image();
+          tempImage.src = src;
+          tempImage.onload = () => {
+            this.preloadedImages[key] = src; // Speichern Sie den vorgeladenen Bildpfad in der Datenvariable
+          };
+          tempImage.onerror = () => console.log(`Failed to preload image: ${src}`);
+        });
+      },
+
+      togglePicture(e) {
+          this.hoveredSingle = true
+  
+          const card = e.target.getAttribute('data-card');
+          const newSrc = this.preloadedImages[card];
+          const image = document.querySelector('.bandShotClean');
+  
+          image.src = newSrc;          
+      },
+
+      leavePicture() {
+        this.hoveredSingle = false
+        document.querySelector('.bandShotClean').src = this.preloadedImages.bandShot;
+      },
+
+      animateCards() {
+        if(!this.hoveredSingle){
+          const parentElement = document.querySelector('.card-desktop'); // Das Eltern-Element auswählen
+          const children = parentElement.children; // Alle Kinder-Elemente auswählen
+          const delay = 50;
+  
+          for (let i = 0; i < children.length; i++) {
+            const childElement = children[i];
+            childElement.style.transitionDelay = `${i * delay}ms`; // Verzögerung basierend auf dem Index festlegen
+            childElement.style.transform = 'translateY(-15px) scale(1.02)';
+          }
+  
+          setTimeout(() => {
+            for (let i = 0; i < children.length; i++) {
+              const childElement = children[i];
+              childElement.style.transitionDelay = `${i * delay}ms`;
+              childElement.style.transform = 'translateY(0px)';
+            }
+          }, 350); // Warten Sie eine Sekunde, bevor die Elemente wieder nach unten animiert werden
         }
       },
     }
@@ -199,10 +270,11 @@ img {
   transition: all 0.2s ease-in-out;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .about {
-    max-width: var(--desktopWidth);
+    max-width: 100%;
     margin: 0 auto;
+    overflow: auto;
   }
   .card-desktop {
     position: relative;
@@ -210,10 +282,6 @@ img {
     height: fit-content;
     width: 100%;
   }
-
-  .about {
-  }
-
   .card-desktop img {
     display: block;
     position: relative;
@@ -242,35 +310,62 @@ img {
   width: 20%;
   text-align: justify;
 }
+.single-card-desktop:hover {
+  transform: translate(0px, -20px) !important;
+  transition: all 0.2s ease-in-out;
+}
 .bandShotGlitch {
+  opacity: 100%;
   position: absolute;
   top: 0;
-  z-index: -1;
+  z-index: 1;
+  opacity: 0%;
   animation: changeZIndex 10s infinite;
 }
+
 @keyframes changeZIndex {
-      0% { z-index: -1; }
-      19% { z-index: -1; }
-      20% { z-index: 1; }
-      25.1% { z-index: -1; }
-      25.2% { z-index: 1; }
-      25.5% { z-index: -1; }
-      25.9% { z-index: 1; }
-      21% { z-index: -1; }
-      46% { z-index: -1; }
-      46% { z-index: 1; }
-      46.5% { z-index: -1; }
-      46.9% { z-index: 1; }
-      48% { z-index: -1; }
-      50% { z-index: -1; }
-      51% { z-index: 1; }
-      52% { z-index: -1; }
-      55% { z-index: 1; }
-      56% { z-index: -1; }
-      60% { z-index: 1; }
-      61% { z-index: -1; }
-      100% { z-index: -1; }
+      0% { opacity: 0%; }
+      18% { opacity: 0%; }
+      19% { opacity: 100%; }
+      20% { opacity: 0%; }
+      23% { opacity: 0%; }
+      25.1% { opacity: 100%; }
+      25.2% { opacity: 0%; }
+      25.5% { opacity: 100%; }
+      25.9% { opacity: 0%; }
+      26% { opacity: 100%; }
+      27% { opacity: 0%; }
+      45% { opacity: 0%; }
+      46% { opacity: 100%; }
+      46% { opacity: 0%; }
+      46.5% { opacity: 100%; }
+      46.9% { opacity: 0%; }
+      48% { opacity: 0%; }
+      50% { opacity: 100%; }
+      51% { opacity: 0%; }
+      52% { opacity: 100%; }
+      55% { opacity: 0%; }
+      56% { opacity: 100%; }
+      56.5% { opacity: 0%; }
+      60% { opacity: 0%; }
+      61% { opacity: 100%; }
+      80% { opacity: 100%; }
+      81% { opacity: 0%; }
+      99% { opacity: 0%; }
+      100% { opacity: 100%; }
     }
+}
+
+@media (min-width: 900px) {
+  .about {
+    max-width: var(--desktopWidthSmall);
+  }
+}
+
+@media (min-width: 1440px) {
+  .about {
+    max-width: var(--desktopWidth);
+  }
 }
 
 </style>

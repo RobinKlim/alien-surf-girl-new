@@ -12,8 +12,9 @@
       </p>
       <div class="ctr">
         <LiteYouTubeEmbed
-          id="dQw4w9WgXcQ"
-          title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
+          id="94RzTmH9it8"
+          title="Alien Surf Girl - Aliens im Wunderland (Live im Knust)"
+          poster="maxresdefault"
         />
       </div>
       <p> Der Release ihrer Debüt-EP „GAME OVER“ schließt für die Band zwei emotionale, entbehrungsreiche und wunderbare Jahre ab. Seid gespannt und lasst euch von Alien Surf Girl in neue Soundwelten entführen.</p>
@@ -77,7 +78,7 @@
 .pressCtr {
   height: 100%;
   padding: 0rem 1rem;
-  overflow: scroll;
+  overflow: auto;
   position: relative;
 }
 .pressCtr > *{
@@ -90,15 +91,28 @@
   display: block;
   padding-bottom: 1rem;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .pressKit {
-    max-width: var(--desktopWidth);
+    max-width: var(--desktopWidthSmall);
     margin: 0 auto
   }
   .pressCtr {
     padding: 0;
   }
 }
+
+@media (min-width: 900px) {
+  .pressKit {
+    max-width: var(--desktopWidthSmall);
+  }
+}
+
+@media (min-width: 1440px) {
+  .pressKit {
+    max-width: var(--desktopWidth);
+  }
+}
+
 
 
 </style>

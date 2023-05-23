@@ -1,8 +1,9 @@
 <template>
   <div class="shop">
-    <Overlay class="zIndex10" v-show="menuSmall == false" ></Overlay>
+    <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false" ></Overlay>
     <InformationBar :informationText="this.informationText" v-if="mobileOrTablet"></InformationBar>
     <SpacerTop></SpacerTop>
+    <p>{{ informationText }}</p>
     <SpacerBottom></SpacerBottom>
   </div>
 </template>
@@ -18,7 +19,7 @@ import SpacerBottom from '../components/SpacerBottom'
     components: { Overlay, InformationBar, SpacerTop, SpacerBottom},
     data() {
       return {
-        informationText: "Bisher gibt es noch(!) keinen Onlinehop. Shirts, Poster, Feuerzeuge und Schlappen gibts auf unseren Konzerten!"
+        informationText: "Bisher gibt es noch keinen Onlinehop. Shirts, Poster, Feuerzeuge und Schlappen gibts auf unseren Konzerten."
       }
     }
   }
@@ -32,4 +33,24 @@ import SpacerBottom from '../components/SpacerBottom'
 p, h1 {
   padding: 5%;
 }
+
+@media (min-width: 768px) {
+  .shop {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .shop {
+    max-width: var(--desktopWidthSmall);
+  }
+}
+
+@media (min-width: 1440px) {
+  .about {
+    max-width: var(--desktopWidth);
+  }
+}
+
 </style>
