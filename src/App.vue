@@ -31,7 +31,7 @@ export default{
       menuSmall: false,
       screenWidth: null,
       rotationFirstDone: 0,
-      mobileOrTablet: true, 
+      mobileOrTablet: true,
     }
   },
   methods: {
