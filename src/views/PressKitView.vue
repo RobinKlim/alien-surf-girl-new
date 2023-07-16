@@ -6,7 +6,7 @@
     <InformationBar  v-if="mobileOrTablet" :informationText="this.informationText"></InformationBar>
     <SpacerTop v-if="mobileOrTablet"></SpacerTop>
     <div class="pressCtr zIndex5">
-      <img id="headerImg" src="../assets/PICS/Bandshot.jpg" alt="">
+      <img id="headerImg" src="../assets/PICS/Bandshot-black-Outfit-whitespace-Sofa-clean.jpg" alt="Bandfoto auf einer Couch mit weißem Hintergrund in schwarzen Outfits">
       <p class="pressText"> Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Boyband. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art. Musikalisch bewegen Sie sich zwischen groovigen Basslines à la Parcels, den eingängigen Synthy-Klängen von The Weeknd und geschmackvollen Gesang inspiriert von Falco. Dazu eine Prise Disco-Gitarre und tanzbare four-on-the-floor Beats. <br/><br/> 
         „Die Euphorie hört nie mehr auf!“ Zuversichtlich und euphorisch tritt Alien Surf Girl einer verschmutzen, grauen und lauten Welt entgegen. Wo bleibt der versprochene Weltuntergang? Sind wir schon Game Over? In dieser dystopisch wirkenden Realität schaffen sie sich ihren eigenen Raum. Der Moment lädt ein die Augen zu schließen und zu dancen als gäbe es kein Morgen mehr.
       </p>
@@ -20,8 +20,8 @@
       <p> Der Release ihrer Debüt-EP „GAME OVER“ schließt für die Band zwei emotionale, entbehrungsreiche und wunderbare Jahre ab. Seid gespannt und lasst euch von Alien Surf Girl in neue Soundwelten entführen.</p>
       <iframe style="border-radius:0px" src="https://open.spotify.com/embed/artist/5HJnjbg0jin1bXgPVKewQi?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       <div class="gallery">
-        <img id="headerImg" src="../assets/PICS/Bandshot_Glitch_quer_rb.jpg" alt="">
-        <img id="headerImg" src="../assets/PICS/Bandshot_169.jpg" alt="">
+        <img id="headerImg" src="../assets/PICS/Bandshot-black-Outfit-whitespace-clean-original.jpg" alt="Bandfoto mit weißem Hintergrund in schwarzen Outfits">
+        <img id="headerImg" src="../assets/PICS/Bandshot-verregnete-Scheibe-Game-Over.jpg" alt="Bandfoto durch verregnete Scheibe für die EP Game Over">
       </div>
       <div class="downloads">
         <p>
@@ -93,7 +93,7 @@
 }
 @media (min-width: 768px) {
   .pressKit {
-    max-width: var(--desktopWidthSmall);
+    max-width: 100%;
     margin: 0 auto
   }
   .pressCtr {

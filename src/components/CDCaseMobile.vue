@@ -1,6 +1,6 @@
 <template>
   <div class="cdCaseMobile">
-    <CDCover v-if="cdClicked === false" @click="opacityZero()" class="cd-cover"/>
+    <CDCover @click="opacityZero()" class="cd-cover"/>
   </div>
 </template>
 
@@ -10,17 +10,11 @@ import CDCover from '../components/CDCover'
 export default {
   props: ['menuSmall'],
   components: { CDCover },
-  data() {
-    return {
-      cdClicked: false
-    }
-  },
   methods: {
     opacityZero() {
       document.querySelector(".cd-cover").style.opacity = "0"
       setTimeout(() => {
-        this.cdClicked = true;
-        this.$emit('cd-clicked', this.cdClicked); 
+        this.$emit('cd-clicked'); 
       },
       800)
     },

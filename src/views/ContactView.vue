@@ -9,16 +9,16 @@
       </div>
       <div class="social-media">
         <a href="https://open.spotify.com/artist/5HJnjbg0jin1bXgPVKewQi?si=FwWzzR1CTbGTEWAk3_Sdmw">
-          <img src="/spotify.svg" class="svg-icon" alt="" />
+          <img src="@/assets/icons/spotify.svg" class="svg-icon" alt="" />
         </a>
         <a href="https://www.youtube.com/channel/UCDReVbsgHdMurAxZqj661hg">
-          <img src="youtube.svg" class="svg-icon" alt="" />
+          <img src="@/assets/icons/youtube.svg" class="svg-icon" alt="" />
         </a>
-        <a href="https://www.instagram.com/aliensurfgirlofficial">
-          <img src="instagram.svg" class="svg-icon" alt="" />
+        <a href="https://www.instagram.com/aliensurfgirl_official">
+          <img src="@/assets/icons/instagram.svg" class="svg-icon" alt="" />
         </a>
         <a href="https://www.tiktok.com/@aliensurfgirl">
-          <img src="tiktok.svg" class="svg-icon" alt="" />
+          <img src="@/assets/icons/tiktok.svg" class="svg-icon" alt="" />
         </a>
       </div>
       <router-link to="/impressum">
@@ -89,7 +89,8 @@ import InformationBar from '../components/InformationBar.vue'
   }
   .social-media {
     display: flex;
-    width: 50%;
+    max-width: 360px;
+
     justify-content: space-around;
     align-items: center;
   }

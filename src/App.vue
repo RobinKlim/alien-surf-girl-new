@@ -1,5 +1,5 @@
 <template>
-    <img v-if="this.mobileOrTablet" src="@/assets/CD-ROM.png" class="navigation-home-img navigation" :class="{navigationSmall: menuSmall}" alt="">
+    <img v-if="this.mobileOrTablet" src="@/assets/PICS/CD-ROM.png" class="navigation-home-img navigation" :class="{navigationSmall: menuSmall}" alt="">
     <nav v-if="this.mobileOrTablet" class="navigation-home-list navigation navigationSmall2" :class="{navigationSmall: menuSmall}" >
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="about"  to="/ueber">Über uns</router-link>
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="hits"  to="/hits">Hits</router-link>
@@ -20,7 +20,7 @@
       </div>
     </nav>
 
-    <router-view :menuSmall='this.menuSmall' :mobileOrTablet='this.mobileOrTablet'/>
+    <router-view :menuSmall='this.menuSmall' :mobileOrTablet='this.mobileOrTablet' :hasRenderedCDCaseMobile='this.hasRenderedCDCaseMobile' @cd-clicked="() => {this.hasRenderedCDCaseMobile = true}"/>
 </template>
 
 <script>
@@ -31,7 +31,8 @@ export default{
       menuSmall: false,
       screenWidth: null,
       rotationFirstDone: 0,
-      mobileOrTablet: true, 
+      mobileOrTablet: true,
+      hasRenderedCDCaseMobile: false,
     }
   },
   methods: {
@@ -126,10 +127,6 @@ export default{
   pointer-events: none;
 }
 /* List and Font */
-@font-face {
-  font-family: "SeaweedScript";
-  src: local("SeaweedScript"),   url(./assets/fonts/SeaweedScript-Regular.ttf) format("truetype");
-}
 a {
   position: absolute;
   font-family: Audiowide-Regular, Arial, sans-serif !important;
@@ -211,7 +208,7 @@ a:hover {
 	left: 50%;
 	width: 40px;
 	height: 40px;
-	background-image: url('/src/assets/CD-ROM.png');
+	background-image: url('/src/assets/PICS/CD-ROM.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	transition: transform 0.3s ease;

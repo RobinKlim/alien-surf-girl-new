@@ -1,31 +1,31 @@
 <template>
   <div class="about">
-    <CDCaseMobile v-if="renderCDCaseMobile && mobileOrTablet" @cd-clicked="() => { renderCDCaseMobile = false; }"></CDCaseMobile>
+    <CDCaseMobile v-if="mobileOrTablet && !hasRenderedCDCaseMobile" @cd-clicked="() => { this.$emit('cd-clicked'); }"></CDCaseMobile>
     <div v-if="mobileOrTablet" class="mobileContainer">
       <Overlay class="zIndex10" v-show="menuSmall == false"></Overlay>
       <InformationBar :informationText="this.informationText"></InformationBar>
       <SpacerTop></SpacerTop>
       <SpacerTop ></SpacerTop>
       <div class="card-deck">
-        <img class="single-card" id="cardJonas" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage" >
-        <img class="single-card" id="cardCyrus" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-        <img class="single-card" id="cardPhilipp" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-        <img class="single-card" id="cardMorten" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
-        <img class="single-card" id="cardRobin" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardJonas" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Jonas.png" @touchstart="saveClickPosition" @touchmove="moveImage" >
+        <img class="single-card" id="cardCyrus" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Cyrus.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardPhilipp" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Philipp.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardMorten" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Morten.png" @touchstart="saveClickPosition" @touchmove="moveImage">
+        <img class="single-card" id="cardRobin" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Robin.png" @touchstart="saveClickPosition" @touchmove="moveImage">
       </div>    
     </div>
     <div v-else>
       <div class="bandshotContainer">
-        <img class="bandShot bandShotClean" src="@/assets/PICS/cropped/Bandshot_Clean_Free.png" alt="">
-        <img v-if="!hoveredSingle" class="bandShot bandShotGlitch" src="@/assets/PICS/cropped/Glitch_cp.png" alt="">
+        <img class="bandShot bandShotClean" src="@/assets/PICS/Bandshot-black-Outfit-freigestellt-clean.png" alt="Bandfoto mit in schwarzen Outfits freigestellt">
+        <img v-if="!hoveredSingle" class="bandShot bandShotGlitch" src="@/assets/PICS/Bandshot-black-Outfit-freigestellt-Glitch.png" alt="Bandfoto mit in schwarzen Outfits freigestellt mit rot-blauen Glitch Effekt">
         <p> {{ informationText }}</p>
       </div>
       <div class="card-desktop" >
-        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Jonas.png" data-card="Jonas" @mouseenter="togglePicture" @mouseleave="leavePicture">
-        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Cyrus.png" data-card="Cyrus" @mouseenter="togglePicture" @mouseleave="leavePicture">
-        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Philipp.png" data-card="Philipp" @mouseenter="togglePicture" @mouseleave="leavePicture">
-        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Morten.png" data-card="Morten" @mouseenter="togglePicture" @mouseleave="leavePicture">
-        <img class="single-card-desktop" src="@/assets/PICS/SingleShots_Cards/Spielkarten_Robin.png" data-card="Robin" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Jonas.png" data-card="Jonas" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Cyrus.png" data-card="Cyrus" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Philipp.png" data-card="Philipp" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Morten.png" data-card="Morten" @mouseenter="togglePicture" @mouseleave="leavePicture">
+        <img class="single-card-desktop" src="@/assets/PICS/Einzelfotos-Sammelkarten-Kartenformat/Spielkarten_Robin.png" data-card="Robin" @mouseenter="togglePicture" @mouseleave="leavePicture">
       </div>      
       <SpacerTop></SpacerTop>
     </div>
@@ -39,7 +39,7 @@ import SpacerTop from '@/components/SpacerTop'
 import CDCaseMobile from '@/components/CDCaseMobile'
 
   export default {
-    props: ['menuSmall', 'mobileOrTablet'],
+    props: ['menuSmall', 'mobileOrTablet', 'hasRenderedCDCaseMobile'],
     components: { Overlay, InformationBar, SpacerTop, CDCaseMobile},
     data() {
       return {
@@ -51,7 +51,6 @@ import CDCaseMobile from '@/components/CDCaseMobile'
           Robin: '',
           bandShot: ''
         },
-        renderCDCaseMobile: true,
         hoveredSingle: false,
         windowWidth: null,
         fingerClickStartPositionY: null,
@@ -132,12 +131,12 @@ import CDCaseMobile from '@/components/CDCaseMobile'
 
       preloadImages() {
       const imagePaths = {
-        Jonas: require('@/assets/PICS/cropped_sitting/Jonas_sitting.png'),
-        Cyrus: require('@/assets/PICS/cropped_sitting/Cyrus_sitting.png'),
-        Philipp: require('@/assets/PICS/cropped_sitting/Philipp_sitting.png'),
-        Morten: require('@/assets/PICS/cropped_sitting/Morten_sitting.png'),
-        Robin: require('@/assets/PICS/cropped_sitting/Robin_sitting.png'),
-        bandShot: require('@/assets/PICS/cropped/Bandshot_Clean_Free.png'),
+        Jonas: require('@/assets/PICS/Einzelfotos-freigestellt-sitzend/Jonas-sitzend-freigestellt.png'),
+        Cyrus: require('@/assets/PICS/Einzelfotos-freigestellt-sitzend/Cyrus-sitzend-freigestellt.png'),
+        Philipp: require('@/assets/PICS/Einzelfotos-freigestellt-sitzend/Philipp-sitzend-freigestellt.png'),
+        Morten: require('@/assets/PICS/Einzelfotos-freigestellt-sitzend/Morten-sitzend-freigestellt.png'),
+        Robin: require('@/assets/PICS/Einzelfotos-freigestellt-sitzend/Robin-sitzend-freigestellt.png'),
+        bandShot: require('@/assets/PICS/Bandshot-black-Outfit-freigestellt-clean.png'),
       };
         Object.entries(imagePaths).forEach(([key, src]) => {
           const tempImage = new Image();
