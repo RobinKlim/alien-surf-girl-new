@@ -1,7 +1,7 @@
 <template>
   <div class="hits">
     <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false"></Overlay>
-    <InformationBar v-if="mobileOrTablet" :informationText="this.informationText" ></InformationBar>
+    <InformationBar v-if="mobileOrTablet" :informationText="informationText"></InformationBar>
     <SpacerTop v-if="mobileOrTablet"></SpacerTop>
     <div class="videos">
       <div v-for="(value, key) in musicVideos" :key="key" :value="value">

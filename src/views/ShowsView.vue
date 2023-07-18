@@ -1,7 +1,7 @@
 <template>
   <div class="shows">
     <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false"></Overlay>
-    <InformationBar v-if="mobileOrTablet" :informationText="this.informationText"></InformationBar>
+    <InformationBar v-if="mobileOrTablet" :informationText="informationText"></InformationBar>
     <SpacerTop v-if="mobileOrTablet" ></SpacerTop>
     <div class="gigsCtr">
       <div class="songkick-widget-container">

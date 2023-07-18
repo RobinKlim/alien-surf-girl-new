@@ -56,7 +56,7 @@ import CDCaseMobile from '@/components/CDCaseMobile'
         fingerClickStartPositionY: null,
         zIndexTop: null,
         clickedImage: null,
-        reorderImageActive: true,
+        cardIsMoving: false,
         intervalId: null,
         informationText: "Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Band. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art."
       }
@@ -107,29 +107,33 @@ import CDCaseMobile from '@/components/CDCaseMobile'
       },
 
       moveImage(e) {
-        this.clickedImage = e.target
-        this.zIndexTop = getComputedStyle(this.clickedImage).getPropertyValue("z-index")
-
-        // check if selected card is on top
-        if(this.zIndexTop == 5) {
-
-          [...e.changedTouches].forEach(touch => {
-
-            const X = this.fingerClickStartPositionX - touch.pageX
-            this.clickedImage.style.left = 'calc(50% - ' + X + 'px)'
-
-            if(X > 70 && this.reorderImageActive) {
-              this.clickedImage.style.left = '-100%'
-              this.reorderImage(this.clickedImage)
-              setTimeout(() => {
+        if(!this.cardIsMoving) {
+          this.clickedImage = e.target
+          this.zIndexTop = getComputedStyle(this.clickedImage).getPropertyValue("z-index")
+          
+          // check if selected card is on top
+          if(this.zIndexTop == 5) {
+            
+            [...e.changedTouches].forEach(touch => {
+              
+              const X = this.fingerClickStartPositionX - touch.pageX
+              this.clickedImage.style.left = 'calc(50% - ' + X + 'px)'
+              
+              if(X > 70) {
+                this.cardIsMoving = true
+                this.clickedImage.style.left = '-100%'
+                this.reorderImage(this.clickedImage)
+                setTimeout(() => {
+                  this.clickedImage.style.left = '50%'
+                  this.cardIsMoving = false
+                }, 350);
+              }
+              if (X < 0){
                 this.clickedImage.style.left = '50%'
-              }, 200);
-            }
-            if (X < 0){
-              this.clickedImage.style.left = '50%'
-            }
-          })
-
+              }
+            })
+  
+          }
         }
       },
 
@@ -185,7 +189,7 @@ import CDCaseMobile from '@/components/CDCaseMobile'
               childElement.style.transitionDelay = `${i * delay}ms`;
               childElement.style.transform = 'translateY(0px)';
             }
-          }, 350); // Warten Sie eine Sekunde, bevor die Elemente wieder nach unten animiert werden
+          }, 300); 
         }
       },
     }
@@ -252,7 +256,7 @@ img {
 #cardCyrus {
   transform: translate(-49%, -4%) rotate(1deg);
   z-index: 5;
-  /* animation: SwipeTeaser 2s linear 3; */
+  animation: SwipeTeaser 2s linear 3;
 }
 
 /* Swipe Trigger Picture Front */
