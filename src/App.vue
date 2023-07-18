@@ -52,11 +52,13 @@ export default{
 
       // shrink menu
       if(this.menuSmall == false) {
-        setTimeout(()=> {this.$refs.navigationHomeListMobile.addEventListener("click", this.resizeMenu);}, 1);
-        const navigation = this.$refs.navigationHomeListMobile.querySelectorAll(".navigation");
+
+        setTimeout(()=> {document.querySelector(".navigation-mobile").addEventListener("click", this.resizeMenu);}, 1);
+        const navigation = document.querySelectorAll(".navigation");
+
         navigation.forEach(element => {
           element.style.transform = `translate(-50%, 50%) rotate(${360+this.rotationFirstDone}deg) scale(0.25)`;
-          // element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 0.7s";
+          element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 0.7s";
         });
 
         this.menuSmall = true;
@@ -64,10 +66,11 @@ export default{
 
       // grow menu
       else {
-        this.$refs.navigationHomeListMobile.removeEventListener("click", this.resizeMenu);
+        document.querySelector(".navigation-mobile").removeEventListener("click", this.resizeMenu);
 
-        const navigationSmall = this.$refs.navigationHomeListMobile.querySelectorAll(".navigationSmall");
-        const navigation = this.$refs.navigationHomeListMobile.querySelectorAll(".navigation");
+        const navigationSmall = document.querySelectorAll(".navigationSmall");
+        const navigation = document.querySelectorAll(".navigation");
+
         navigationSmall.forEach(element => {
           element.style.animationPlayState = "paused";
           element.style.transform = "translate(-50%, 50%) rotate(0deg) scale(0.25)";
