@@ -1,6 +1,6 @@
 <template>
     <img v-if="this.mobileOrTablet" src="@/assets/PICS/CD-ROM.png" class="navigation-home-img navigation" :class="{navigationSmall: menuSmall}" alt="">
-    <nav v-if="this.mobileOrTablet" class="navigation-home-list navigation navigationSmall2" :class="{navigationSmall: menuSmall}" >
+    <nav v-if="this.mobileOrTablet" ref="navigationHomeListMobile" class="navigation-mobile navigation navigationSmall2" :class="{navigationSmall: menuSmall}" >
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="about"  to="/ueber">Über uns</router-link>
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="hits"  to="/hits">Hits</router-link>
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="contact"  to="/kontakt">Kontakt</router-link>
@@ -8,7 +8,7 @@
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shows"  to="/shows">Shows</router-link>
       <router-link @click="resizeMenu()" :class="{disableClick: menuSmall}" class="shop"  to="/shop">Shop</router-link>
     </nav>
-    <nav v-else class="navigation-desktop zIndex15">
+    <nav ref="navigationHomeListMobileDesktop" v-else class="navigation-desktop zIndex15">
       <div class="navigation-container">
         <router-link class="about"  to="/ueber">Über uns</router-link>
         <router-link class="hits"  to="/hits">Hits</router-link>
@@ -38,10 +38,12 @@ export default{
   methods: {
     // Breite der CD bekommen als CSS Variable
     getDimensions() {
-      this.screenWidth = document.querySelector('.navigation-home-list').clientWidth;
-      
-      this.cdDimensions = this.screenWidth < document.querySelector('.navigation-home-list').clientWidth ? this.screenWidth : this.screenWidth/2
-      document.documentElement.style.setProperty('--screenWidth', `${this.screenWidth}px`);
+      if(this.mobileOrTablet) {
+        this.screenWidth = this.$refs.navigationHomeListMobile.clientWidth;
+        
+        this.cdDimensions = this.screenWidth < this.$refs.navigationHomeListMobile.clientWidth ? this.screenWidth : this.screenWidth/2
+        document.documentElement.style.setProperty('--screenWidth', `${this.screenWidth}px`);
+      }
 
       this.mobileOrTablet = window.innerWidth < 768 ? true : false;
     },
@@ -50,12 +52,11 @@ export default{
 
       // shrink menu
       if(this.menuSmall == false) {
-        setTimeout(()=> {document.querySelector(".navigation-home-list").addEventListener("click", this.resizeMenu);}, 1);
-
-        const navigation = document.querySelectorAll(".navigation");
+        setTimeout(()=> {this.$refs.navigationHomeListMobile.addEventListener("click", this.resizeMenu);}, 1);
+        const navigation = this.$refs.navigationHomeListMobile.querySelectorAll(".navigation");
         navigation.forEach(element => {
           element.style.transform = `translate(-50%, 50%) rotate(${360+this.rotationFirstDone}deg) scale(0.25)`;
-          element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 0.7s";
+          // element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 0.7s";
         });
 
         this.menuSmall = true;
@@ -63,17 +64,16 @@ export default{
 
       // grow menu
       else {
-        document.querySelector(".navigation-home-list").removeEventListener("click", this.resizeMenu);
-        // Deactivate class navigationSmall
+        this.$refs.navigationHomeListMobile.removeEventListener("click", this.resizeMenu);
 
-        const navigationSmall = document.querySelectorAll(".navigationSmall");
+        const navigationSmall = this.$refs.navigationHomeListMobile.querySelectorAll(".navigationSmall");
+        const navigation = this.$refs.navigationHomeListMobile.querySelectorAll(".navigation");
         navigationSmall.forEach(element => {
           element.style.animationPlayState = "paused";
           element.style.transform = "translate(-50%, 50%) rotate(0deg) scale(0.25)";
           element.style.animation = "none";
         });
 
-        const navigation = document.querySelectorAll(".navigation");
         navigation.forEach(element => {
           setTimeout(()=> {element.style.transform = "translate(-50%, 50%) rotate(360deg) scale(1)";}, 1);
         })
@@ -112,7 +112,7 @@ export default{
   bottom: 10%;
 }
 
-.navigation-home-list{
+.navigation-mobile{
   z-index: 12;
   transition: all linear 0.7s; 
   height: var(--screenWidth);
@@ -136,29 +136,29 @@ a {
   white-space: nowrap;
 }
 
-.navigation-home-list a:nth-child(1) {
+.navigation-mobile a:nth-child(1) {
   top: 15%;
   left: 50%;
   translate: -50%;
 }
-.navigation-home-list a:nth-child(2) {
+.navigation-mobile a:nth-child(2) {
   left: 70%;
   top: 35%;
 }
-.navigation-home-list a:nth-child(3) {
+.navigation-mobile a:nth-child(3) {
   left: 70%;
   bottom: 35%;
 }
-.navigation-home-list a:nth-child(4) {
+.navigation-mobile a:nth-child(4) {
   bottom: 15%;
   left: 50%;
   translate: -50%;
 }
-.navigation-home-list a:nth-child(5) {
+.navigation-mobile a:nth-child(5) {
   right: 70%;
   bottom: 35%;
 }
-.navigation-home-list a:nth-child(6) {
+.navigation-mobile a:nth-child(6) {
   right: 70%;
   top: 35%;
 }

@@ -57,6 +57,7 @@ import CDCaseMobile from '@/components/CDCaseMobile'
         zIndexTop: null,
         clickedImage: null,
         reorderImageActive: true,
+        intervalId: null,
         informationText: "Alien Surf Girl bringt verspielt Nu-Disco Pop in das Gewand einer 2000er Band. Weiß-lackierte Fingernägel, die Eleganz von Feinripp und Silber-Schmuck, kombiniert mit einer weichen und zärtlichen Art."
       }
     },
@@ -64,11 +65,15 @@ import CDCaseMobile from '@/components/CDCaseMobile'
       if(!this.mobileOrTablet) {
         this.animateCards();
         this.preloadImages()
-        setInterval(() => {
+        this.intervalId = setInterval(() => { 
           this.animateCards();
         }, 5000);
       };
     },
+    unmounted() {  
+      clearInterval(this.intervalId);  
+    },
+
 
     methods: {
       reorderImage(element) {
@@ -115,7 +120,6 @@ import CDCaseMobile from '@/components/CDCaseMobile'
 
             if(X > 70 && this.reorderImageActive) {
               this.clickedImage.style.left = '-100%'
-              // console.log("element")
               this.reorderImage(this.clickedImage)
               setTimeout(() => {
                 this.clickedImage.style.left = '50%'
