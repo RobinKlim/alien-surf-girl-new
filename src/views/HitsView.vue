@@ -73,7 +73,7 @@ p, h1 {
   padding: 5%;
 }
 .videoSingle {
-  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 .videos {
   height: 100%;

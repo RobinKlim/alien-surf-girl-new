@@ -5,8 +5,20 @@
     <SpacerTop v-if="mobileOrTablet" ></SpacerTop>
     <div class="gigsCtr">
       <div class="songkick-widget-container">
-        <a href="https://www.songkick.com/artists/10228142" class="songkick-widget" data-theme="dark" data-track-button="on" data-detect-style="on" data-background-color="rgb(0,0,0,1)" data-font-color="rgb(255,255,255,1)" data-locale="en" data-other-artists="on" data-share-button="on" data-country-filter="on"
-></a>
+        <a href="https://www.songkick.com/artists/10228142" 
+        class="songkick-widget" 
+        data-theme="dark" 
+        data-track-button="on" 
+        data-detect-style="on" 
+        data-background-color="rgb(0,0,0,1)" 
+        data-font-color="rgb(255,255,255,1)" 
+        data-locale="en" 
+        data-other-artists="on" 
+        data-share-button="on" 
+        data-country-filter="on"
+        data-max-width="1200px"
+        >
+        </a>
       </div>
       <LiteYouTubeEmbed
           id="94RzTmH9it8"
@@ -62,16 +74,14 @@
   padding: 0rem 1rem;
   overflow: auto;
 }
-.gigSingle{
-  padding-bottom: 1rem;
-}
+
 @media (min-width: 768px) {
   .shows {
     max-width: 100%;
     margin: 0 auto
   }
   .gigsCtr {
-    padding: 0;
+    padding: 1rem 0rem 0rem 0rem;
   }
 }
 

@@ -2,11 +2,10 @@
   <div class="pressKit">
     <Overlay v-if="mobileOrTablet" class="zIndex10" v-show="menuSmall == false"></Overlay>
     <Overlay v-if="mobileOrTablet"></Overlay>
-
     <InformationBar  v-if="mobileOrTablet" :informationText="informationText"></InformationBar>
     <SpacerTop v-if="mobileOrTablet"></SpacerTop>
     <div class="pressCtr zIndex5">
-      <div class="ctr">
+      <div>
         <LiteYouTubeEmbed
           id="Bhfuq_gJun4"
           title="Alien Surf Girl feat. GI-MORE - Kein Weltuntergang (Live im Knust)"
@@ -82,7 +81,7 @@
   position: relative;
 }
 .pressCtr > *{
-  padding: 0 0 1rem 0;
+  padding: 1rem 0 0 0;
 }
 #headerImg {
   max-width: 100%;

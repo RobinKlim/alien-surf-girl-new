@@ -14,7 +14,7 @@
         <a href="https://www.youtube.com/channel/UCDReVbsgHdMurAxZqj661hg">
           <img src="@/assets/icons/youtube.svg" class="svg-icon" alt="" />
         </a>
-        <a href="https://www.instagram.com/aliensurfgirl_official">
+        <a href="https://www.instagram.com/aliensurfgirlmusik">
           <img src="@/assets/icons/instagram.svg" class="svg-icon" alt="" />
         </a>
         <a href="https://www.tiktok.com/@aliensurfgirl">
