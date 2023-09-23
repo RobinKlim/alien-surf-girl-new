@@ -54,12 +54,6 @@ export default{
       if(this.menuSmall == false) {
 
         setTimeout(()=> {document.querySelector(".navigation-mobile").addEventListener("click", this.resizeMenu);}, 1);
-        const navigation = document.querySelectorAll(".navigation");
-
-        navigation.forEach(element => {
-          element.style.transform = `translate(-50%, 50%) rotate(${360+this.rotationFirstDone}deg) scale(0.25)`;
-          element.style.animation = "rotationAnim-7ba5bd90 20s linear infinite 0.7s";
-        });
 
         this.menuSmall = true;
       }
@@ -67,19 +61,6 @@ export default{
       // grow menu
       else {
         document.querySelector(".navigation-mobile").removeEventListener("click", this.resizeMenu);
-
-        const navigationSmall = document.querySelectorAll(".navigationSmall");
-        const navigation = document.querySelectorAll(".navigation");
-
-        navigationSmall.forEach(element => {
-          element.style.animationPlayState = "paused";
-          element.style.transform = "translate(-50%, 50%) rotate(0deg) scale(0.25)";
-          element.style.animation = "none";
-        });
-
-        navigation.forEach(element => {
-          setTimeout(()=> {element.style.transform = "translate(-50%, 50%) rotate(360deg) scale(1)";}, 1);
-        })
 
         this.rotationFirstDone = 360;
         this.menuSmall = false;
@@ -113,6 +94,7 @@ export default{
 }
 .navigationSmall {
   bottom: 10%;
+  transform: translate(-50%, 50%) rotate(360deg) scale(0.25);
 }
 
 .navigation-mobile{
