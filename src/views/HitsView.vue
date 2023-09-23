@@ -42,6 +42,14 @@ iframe.value?.playVideo()
     data() {
       return {
         musicVideos: {
+          badTrip: {
+            id: "nH7Qz5yLm-Q",
+            title: "Alien Surf Girl - Bad Trip (Musikvideo)"
+          },
+          NoScreenTime: {
+            id: "HYSCNt79BlA",
+            title: "Alien Surf Girl - No Screen Time (Musikvideo)"
+          },
           keinWeltuntergang: {
             id: "cG6kAhcg5dE",
             title: "Alien Surf Girl - Kein Weltuntergang (Offizielles Musikvideo)"
